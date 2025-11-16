@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 7708829944554539386}
   - component: {fileID: 265859650552222810}
   - component: {fileID: 4544706950386798309}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerTest
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5259bff84c3aa4849b7a9ddb17a1c481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputPlayer: {fileID: 4091491378843097099, guid: 9ef5995081771aa4e99d4567d0be8045, type: 3}
+  _inputPlayer: {fileID: 0}
   _settings: {fileID: 11400000, guid: 9ab74d702b0e67a47a04268554ab2935, type: 2}
 --- !u!114 &6367803953236587822
 MonoBehaviour:
@@ -190,7 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _setting: {fileID: 11400000, guid: 1331201e279db4749907d2cab738c09a, type: 2}
   _AresSetting: {fileID: 11400000, guid: 325541a21510ec9458490adfb16fe1bc, type: 2}
-  _inputPlayer: {fileID: 4091491378843097099, guid: 9ef5995081771aa4e99d4567d0be8045, type: 3}
+  _inputPlayer: {fileID: 0}
 --- !u!114 &7708829944554539386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,7 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _staminaSlider: {fileID: 0}
   _settings: {fileID: 11400000, guid: c0a9b18c3da59a749b5eb1f6d2d1a301, type: 2}
-  _input: {fileID: 4091491378843097099, guid: 9ef5995081771aa4e99d4567d0be8045, type: 3}
+  _input: {fileID: 0}
 --- !u!114 &265859650552222810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,7 +241,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2900657091566642409}
   - component: {fileID: 8035807999637959826}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AresMask
   m_TagString: PlayerMask
   m_Icon: {fileID: 0}
@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 3935723765220629230}
   - component: {fileID: 8057830598945093423}
   - component: {fileID: 847090411629513985}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 3175259454465441036}
   - component: {fileID: 5780447224666111590}
   - component: {fileID: 5145933885149050598}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sword
   m_TagString: PlayerWepon
   m_Icon: {fileID: 0}
@@ -420,7 +420,7 @@ Transform:
   m_GameObject: {fileID: 9013201867752877092}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.33098507, w: 0.943636}
-  m_LocalPosition: {x: 0.023, y: -0.083000004, z: -1.1}
+  m_LocalPosition: {x: 0.023, y: -0.083000004, z: 0.8999995}
   m_LocalScale: {x: -0.08483696, y: 0.46332666, z: 0.2159}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -494,7 +494,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
