@@ -10,7 +10,7 @@ public class PlayerCollisionController : MonoBehaviour
 
     private void Awake()
     {
-        _playerCollider = GetComponent<Collider>();
+        _playerCollider = GetComponentInParent<Collider>();
     }
 
     private void OnCollisionEnter(Collision collision)

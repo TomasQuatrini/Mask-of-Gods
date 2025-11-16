@@ -1,8 +1,5 @@
 using UnityEngine;
 
-using UnityEngine;
-
-[RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody _rb;
@@ -20,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        _rb = GetComponent<Rigidbody>();
+        _rb = GetComponentInParent<Rigidbody>();
         _playerCollisionController = GetComponent<PlayerCollisionController>();
         _stamina = GetComponent<PlayerStaminaSM>();
         _inputPlayer.OnMove += HandleMove;
@@ -75,6 +72,5 @@ public class PlayerMovement : MonoBehaviour
     {
         _hasStamina = has;
     }
-
 }
  

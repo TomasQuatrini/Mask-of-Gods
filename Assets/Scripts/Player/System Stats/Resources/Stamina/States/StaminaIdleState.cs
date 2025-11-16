@@ -7,7 +7,7 @@ public class StaminaIdleState : IStaminaState
 
     public void Enter()
     {
-        Debug.Log("Entering Idle State");
+        
     }
     public void Exit() { }
 
