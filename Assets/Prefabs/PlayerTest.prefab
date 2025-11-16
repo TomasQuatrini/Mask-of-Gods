@@ -15,11 +15,9 @@ GameObject:
   - component: {fileID: 2855728939340950250}
   - component: {fileID: 2916843546858670320}
   - component: {fileID: 6367803953236587822}
-  - component: {fileID: -1217446550534575424}
   - component: {fileID: 7708829944554539386}
   - component: {fileID: 265859650552222810}
   - component: {fileID: 4544706950386798309}
-  - component: {fileID: 964461386838377352}
   m_Layer: 6
   m_Name: PlayerTest
   m_TagString: Player
@@ -177,21 +175,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
---- !u!114 &-1217446550534575424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1382397178787076059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 335f4e0fb566d544ca6e04deef38f345, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _setting: {fileID: 11400000, guid: 1331201e279db4749907d2cab738c09a, type: 2}
-  _AresSetting: {fileID: 11400000, guid: 325541a21510ec9458490adfb16fe1bc, type: 2}
-  _inputPlayer: {fileID: 0}
 --- !u!114 &7708829944554539386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,23 +215,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6ab395eaaadbc041952d81dc58d8fc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &964461386838377352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1382397178787076059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc60bfb1acb063941bbe8c478855620f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageOnContact: 10
-  damageTag: Enemy
-  damageLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!1 &4570825938316604156
 GameObject:
   m_ObjectHideFlags: 0
