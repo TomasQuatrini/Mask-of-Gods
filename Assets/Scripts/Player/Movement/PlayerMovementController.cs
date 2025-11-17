@@ -21,22 +21,27 @@ public class PlayerMovement : MonoBehaviour
     {
         _ctx = GetComponentInParent<PlayerContext>();
         _rb = _ctx.Body;
-        _inputPlayer = _ctx.Input;
+        _inputPlayer = InputPlayer.Instance;
         _playerCollisionController = _ctx.CollisionController;
         _stamina = _ctx.Stamina;
-
-        _inputPlayer.OnMove += HandleMove;
-        _inputPlayer.OnRun += HandleRun;
-        _inputPlayer.OnJump += HandleJump;
-        _stamina.HasStamina += HasStamina;
+        if (_inputPlayer != null)
+        {
+            _inputPlayer.OnMove += HandleMove;
+            _inputPlayer.OnRun += HandleRun;
+            _inputPlayer.OnJump += HandleJump;
+            _stamina.HasStamina += HasStamina;
+        }
     }
 
     private void OnDestroy()
     {
-        _inputPlayer.OnMove -= HandleMove;
-        _inputPlayer.OnRun -= HandleRun;
-        _inputPlayer.OnJump -= HandleJump;
-        _stamina.HasStamina -= HasStamina;
+        if (_inputPlayer != null)
+        {
+            _inputPlayer.OnMove -= HandleMove;
+            _inputPlayer.OnRun -= HandleRun;
+            _inputPlayer.OnJump -= HandleJump;
+            _stamina.HasStamina -= HasStamina;
+        }
     }
 
     private void FixedUpdate()
@@ -78,4 +83,3 @@ public class PlayerMovement : MonoBehaviour
         _hasStamina = has;
     }
 }
- 

@@ -28,7 +28,7 @@ public class PlayerStaminaSM : MonoBehaviour
     private void Awake()
     {        
         _ctx = GetComponentInParent<PlayerContext>();
-        _input = _ctx.Input;
+        _input = InputPlayer.Instance;
 
         var core = _ctx.StatsComponent;
         Stats = core.Stats;        

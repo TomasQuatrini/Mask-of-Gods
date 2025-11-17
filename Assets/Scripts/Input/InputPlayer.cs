@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class InputPlayer : MonoBehaviour
 {
+    public static InputPlayer Instance { get; private set; }
     [SerializeField] private KeysMove _keys;
 
-    // Eventos que notifican lo que pasa con el input
+    
     public event Action<Vector3> OnMove;   // avisa la dirección (pero no qué hacer con ella)
     public event Action<bool> OnRun;       // avisa si se mantiene presionado correr
     public event Action OnJump;
@@ -15,7 +16,14 @@ public class InputPlayer : MonoBehaviour
 
     private Vector3 _moveInput;
     private bool _isRunning;
-    //usar un diccionario?
+    
+    void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+    }
     void Update()
     {
         _moveInput = Vector3.zero;

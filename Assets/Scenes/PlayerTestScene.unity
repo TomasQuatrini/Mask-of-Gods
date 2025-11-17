@@ -176,17 +176,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d9b8f76258d8ee43bd3d938f1fb1859, type: 3}
---- !u!114 &552982312 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4091491378843097099, guid: 9ef5995081771aa4e99d4567d0be8045, type: 3}
-  m_PrefabInstance: {fileID: 1069207592}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea5552958b44244c8f70c4ac3615a44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &701823304 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4787128759142517579, guid: 5ed9aa92c20086b4b93f74bd16f0d695, type: 3}
@@ -247,63 +236,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1069207592
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3447730546168699924, guid: 9ef5995081771aa4e99d4567d0be8045, type: 3}
-      propertyPath: m_Name
-      value: InputController
-      objectReference: {fileID: 0}
-    - target: {fileID: 5422181771294006975, guid: 9ef5995081771aa4e99d4567d0be8045, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5422181771294006975, guid: 9ef5995081771aa4e99d4567d0be8045, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5422181771294006975, guid: 9ef5995081771aa4e99d4567d0be8045, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5422181771294006975, guid: 9ef5995081771aa4e99d4567d0be8045, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5422181771294006975, guid: 9ef5995081771aa4e99d4567d0be8045, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5422181771294006975, guid: 9ef5995081771aa4e99d4567d0be8045, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5422181771294006975, guid: 9ef5995081771aa4e99d4567d0be8045, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5422181771294006975, guid: 9ef5995081771aa4e99d4567d0be8045, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5422181771294006975, guid: 9ef5995081771aa4e99d4567d0be8045, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5422181771294006975, guid: 9ef5995081771aa4e99d4567d0be8045, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9ef5995081771aa4e99d4567d0be8045, type: 3}
 --- !u!1 &1143809477
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,7 +334,7 @@ PrefabInstance:
     - target: {fileID: 2916843546858670320, guid: 8ab08cd77a13fd843a12c766fe5c0915, type: 3}
       propertyPath: _inputPlayer
       value: 
-      objectReference: {fileID: 552982312}
+      objectReference: {fileID: 0}
     - target: {fileID: 4740138910566905775, guid: 8ab08cd77a13fd843a12c766fe5c0915, type: 3}
       propertyPath: m_LocalPosition.x
       value: 22.67
@@ -446,7 +378,7 @@ PrefabInstance:
     - target: {fileID: 7708829944554539386, guid: 8ab08cd77a13fd843a12c766fe5c0915, type: 3}
       propertyPath: _input
       value: 
-      objectReference: {fileID: 552982312}
+      objectReference: {fileID: 0}
     - target: {fileID: 7708829944554539386, guid: 8ab08cd77a13fd843a12c766fe5c0915, type: 3}
       propertyPath: _staminaSlider
       value: 
@@ -771,5 +703,4 @@ SceneRoots:
   - {fileID: 1143809480}
   - {fileID: 1822987067387372615}
   - {fileID: 1512843930}
-  - {fileID: 1069207592}
   - {fileID: 410519706}

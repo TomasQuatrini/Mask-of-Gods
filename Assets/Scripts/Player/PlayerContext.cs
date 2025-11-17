@@ -6,8 +6,7 @@ public class PlayerContext : MonoBehaviour
     public Rigidbody Body { get; private set; }
     public CapsuleCollider Collider { get; private set; }
 
-    [Header("Logic Components")]
-    public InputPlayer Input { get; private set; }
+    [Header("Logic Components")]   
     public PlayerMovement Movement { get; private set; }
     public PlayerCollisionController CollisionController { get; private set; }
     public PlayerHealth Health { get; private set; }
@@ -17,8 +16,7 @@ public class PlayerContext : MonoBehaviour
     private void Awake()
     {
         Body = GetComponent<Rigidbody>();
-        Collider = GetComponent<CapsuleCollider>();
-        Input = GetComponentInChildren<InputPlayer>();
+        Collider = GetComponent<CapsuleCollider>();                      
         Movement = GetComponentInChildren<PlayerMovement>();
         CollisionController = GetComponentInChildren<PlayerCollisionController>();
         Health = GetComponentInChildren<PlayerHealth>();
