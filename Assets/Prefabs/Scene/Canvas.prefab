@@ -160,6 +160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8883920480278325123}
   - component: {fileID: 4787128759142517579}
+  - component: {fileID: 6723134102255823479}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -239,6 +240,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6723134102255823479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2872809793443474251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7d196656547f954e872e4ed296f5889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barType: 0
 --- !u!1 &3366253931593606317
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,6 +663,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1606097776031281091}
   - component: {fileID: 2246372006518101765}
+  - component: {fileID: 6690526360909288908}
   m_Layer: 5
   m_Name: StaminaBar
   m_TagString: Untagged
@@ -728,6 +743,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6690526360909288908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8025652920404977117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7d196656547f954e872e4ed296f5889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barType: 1
 --- !u!1 &8026401906074432922
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,6 +842,7 @@ GameObject:
   - component: {fileID: 7069336307514435415}
   - component: {fileID: 821186570613960897}
   - component: {fileID: 8320591970315370167}
+  - component: {fileID: 980866729283793516}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -880,3 +909,15 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &980866729283793516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8424563711698006216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1731afb19542e1942995be6d3133d510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

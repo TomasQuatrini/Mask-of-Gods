@@ -5,14 +5,13 @@ using System;
 
 public class PlayerStaminaSM : MonoBehaviour
 {
-    [Header("UI (opcional)")]
-    [SerializeField] private Slider _staminaSlider;
+    private PlayerContext _ctx;
 
     [Header("Config (por segundo)")]
     [SerializeField] private StaminaSettings _settings;
 
     [Header("Input")]
-    [SerializeField] private InputPlayer _input;
+    private InputPlayer _input;
 
     [Header("Stamina States")]
     private IStaminaState _state;
@@ -28,7 +27,10 @@ public class PlayerStaminaSM : MonoBehaviour
 
     private void Awake()
     {        
-        var core = GetComponent<PlayerStatsComponent>();
+        _ctx = GetComponentInParent<PlayerContext>();
+        _input = _ctx.Input;
+
+        var core = _ctx.StatsComponent;
         Stats = core.Stats;        
         StaminaStat = Stats.Get(StatType.Stamina);
         StaminaResource = new Resource("Stamina", _settings.baseMax, 0.25f);
@@ -49,30 +51,12 @@ public class PlayerStaminaSM : MonoBehaviour
 
     private void OnEnable()
     {
-        StaminaStat.OnValueChanged += OnStaminaStatChanged;
-        StaminaResource.OnMaxChanged += OnStaminaMaxChanged;
-        StaminaResource.OnCurrentChanged += OnStaminaCurrentChanged;
-        if (_staminaSlider)
-        {
-            _staminaSlider.minValue = 0f;
-            _staminaSlider.maxValue = StaminaResource.Max;
-            _staminaSlider.value = StaminaResource.Current;
-        }
+        StaminaStat.OnValueChanged += OnStaminaStatChanged;    
         _input.OnRun += OnTryRun;
     }
 
     private void OnStaminaStatChanged(float newValue) => StaminaResource.RecomputeMaxFromStat(StaminaStat);
-    private void OnStaminaMaxChanged(float newMax)
-    {
-        if (_staminaSlider)
-            _staminaSlider.maxValue = newMax;
-    }
-    private void OnStaminaCurrentChanged(float newCurrent)
-    {
-        if (_staminaSlider)
-            _staminaSlider.value = newCurrent;
-    }
-
+    
     private void CheckStamina()
     {
         if (StaminaResource.Current > _settings.spendRunning)
@@ -92,9 +76,6 @@ public class PlayerStaminaSM : MonoBehaviour
     private void OnDisable()
     {
         StaminaStat.OnValueChanged -= OnStaminaStatChanged;
-        StaminaResource.OnMaxChanged -= OnStaminaMaxChanged;
-        StaminaResource.OnCurrentChanged -= OnStaminaCurrentChanged;
-
         _input.OnRun -= OnTryRun;
     }
 

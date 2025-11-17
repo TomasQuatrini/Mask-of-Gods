@@ -3,19 +3,21 @@ using static UnityEngine.GraphicsBuffer;
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] private Transform _target;
+    public static CameraFollow Instance { get; private set; }
+    private Transform _target;
     [SerializeField] private float _smoothSpeed = 5f;
     private Vector3 _offset;
 
     private void Awake()
     {
-        if (_target == null)
+        if (Instance != null && Instance != this)
         {
-            Debug.LogError("CameraFollow no tiene asignado un target!");
-            enabled = false;
-            return;
+            Destroy(gameObject);
         }
-        _offset = transform.position - _target.position;
+        else
+        {
+            Instance = this;
+        }
     }
 
     private void FixedUpdate()
@@ -23,5 +25,11 @@ public class CameraFollow : MonoBehaviour
         if (_target == null) return;
         Vector3 desiredPosition = _target.position + _offset;
         transform.position = Vector3.Lerp(transform.position, desiredPosition, _smoothSpeed * Time.deltaTime);
-    }   
+    }
+    
+    public void SetTarget(Transform target)
+    {
+        _target = target;
+        _offset = transform.position - _target.position;
+    }
 }

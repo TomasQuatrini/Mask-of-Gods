@@ -3,12 +3,14 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody _rb;
+    private PlayerContext _ctx;
     private PlayerCollisionController _playerCollisionController;
     private PlayerStaminaSM _stamina;
     private PlayerJumpCommand _jumpCommand;
     private PlayerMoveCommand _moveCommand;
+    private InputPlayer _inputPlayer;
 
-    [SerializeField] private InputPlayer _inputPlayer;
+
     [SerializeField] private MovementSettings _settings; //como hacer para que no dependa del editor
 
     private Vector3 _currentDirection = Vector3.zero;
@@ -17,9 +19,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        _rb = GetComponentInParent<Rigidbody>();
-        _playerCollisionController = GetComponent<PlayerCollisionController>();
-        _stamina = GetComponent<PlayerStaminaSM>();
+        _ctx = GetComponentInParent<PlayerContext>();
+        _rb = _ctx.Body;
+        _inputPlayer = _ctx.Input;
+        _playerCollisionController = _ctx.CollisionController;
+        _stamina = _ctx.Stamina;
+
         _inputPlayer.OnMove += HandleMove;
         _inputPlayer.OnRun += HandleRun;
         _inputPlayer.OnJump += HandleJump;
