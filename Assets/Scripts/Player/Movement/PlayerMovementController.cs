@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     private PlayerJumpCommand _jumpCommand;
     private PlayerMoveCommand _moveCommand;
     private InputPlayer _inputPlayer;
+    private bool _isSubscribed;
+    private bool _isStaminaSubscribed;
 
 
     [SerializeField] private MovementSettings _settings; //como hacer para que no dependa del editor
@@ -24,24 +26,17 @@ public class PlayerMovement : MonoBehaviour
         _inputPlayer = InputPlayer.Instance;
         _playerCollisionController = _ctx.CollisionController;
         _stamina = _ctx.Stamina;
-        if (_inputPlayer != null)
-        {
-            _inputPlayer.OnMove += HandleMove;
-            _inputPlayer.OnRun += HandleRun;
-            _inputPlayer.OnJump += HandleJump;
-            _stamina.HasStamina += HasStamina;
-        }
+        Subscribe();
+    }
+
+    private void OnEnable()
+    {
+        Subscribe();
     }
 
     private void OnDestroy()
     {
-        if (_inputPlayer != null)
-        {
-            _inputPlayer.OnMove -= HandleMove;
-            _inputPlayer.OnRun -= HandleRun;
-            _inputPlayer.OnJump -= HandleJump;
-            _stamina.HasStamina -= HasStamina;
-        }
+        Unsubscribe();
     }
 
     private void FixedUpdate()
@@ -81,5 +76,44 @@ public class PlayerMovement : MonoBehaviour
     private void HasStamina(bool has)
     {
         _hasStamina = has;
+    }
+
+    private void Subscribe()
+    {
+        if (!_isStaminaSubscribed && _stamina != null)
+        {
+            _stamina.HasStamina += HasStamina;
+            _isStaminaSubscribed = true;
+        }
+
+        if (_inputPlayer == null)
+        {
+            _inputPlayer = InputPlayer.Instance;
+        }
+
+        if (_inputPlayer != null && !_isSubscribed)
+        {
+            _inputPlayer.OnMove += HandleMove;
+            _inputPlayer.OnRun += HandleRun;
+            _inputPlayer.OnJump += HandleJump;
+            _isSubscribed = true;
+        }
+    }
+
+    private void Unsubscribe()
+    {
+        if (_inputPlayer != null && _isSubscribed)
+        {
+            _inputPlayer.OnMove -= HandleMove;
+            _inputPlayer.OnRun -= HandleRun;
+            _inputPlayer.OnJump -= HandleJump;
+            _isSubscribed = false;
+        }
+
+        if (_stamina != null && _isStaminaSubscribed)
+        {
+            _stamina.HasStamina -= HasStamina;
+            _isStaminaSubscribed = false;
+        }
     }
 }
