@@ -34,6 +34,15 @@ public class PlayerMovement : MonoBehaviour
         Subscribe();
     }
 
+    private void Update()
+    {
+        // Keep trying to subscribe in case InputPlayer initializes after this component.
+        if (!_isSubscribed)
+        {
+            Subscribe();
+        }
+    }
+
     private void OnDestroy()
     {
         Unsubscribe();
