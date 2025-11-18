@@ -1,14 +1,19 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class InputPlayer : MonoBehaviour
 {
     public static InputPlayer Instance { get; private set; }
-    [SerializeField] private KeysMove _keys;
-    
-    public event Action<Vector3> OnMove;   // avisa la dirección (pero no qué hacer con ella)
-    public event Action<bool> OnRun;       // avisa si se mantiene presionado correr
+
+    [Header("propiedades para networking")]
+    public Vector3 CurrentMove { get; private set; }
+    public bool IsRunning { get; private set; }
+    public bool IsJumping { get; private set; }
+
+    [SerializeField] private KeysMove _keys;    
+
+    public event Action<Vector3> OnMove;   
+    public event Action<bool> OnRun;       
     public event Action OnJump;
     public event Action OnAttack;
     public event Action OnSpecial1;
@@ -36,13 +41,14 @@ public class InputPlayer : MonoBehaviour
             _moveInput.x -= 1;
         if (Input.GetKey(_keys.right))
             _moveInput.x += 1;
-        // Correr
+
+        CurrentMove = _moveInput;
         _isRunning = Input.GetKey(_keys.run);
+        IsRunning = _isRunning;
+
         OnRun?.Invoke(_isRunning);
-        OnMove?.Invoke(_moveInput);
-        // Saltar
-        if (Input.GetKeyDown(_keys.jump))
-            OnJump?.Invoke();
+        OnMove?.Invoke(_moveInput);       
+
         if (Input.GetKeyDown(_keys.attack))
         { 
             Debug.Log("LLamando Ataque");
@@ -52,6 +58,15 @@ public class InputPlayer : MonoBehaviour
         {
             Debug.Log("LLamando Ataque Especial");
             OnSpecial1?.Invoke();
+        }
+        if (Input.GetKeyDown(_keys.jump))
+        {
+            OnJump?.Invoke();
+            IsJumping = true;
+        }
+        else         
+        {
+            IsJumping = false;
         }
     }
 }

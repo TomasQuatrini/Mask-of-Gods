@@ -4,7 +4,6 @@ using UnityEngine;
 using Fusion;
 using Fusion.Sockets;
 using UnityEngine.UI;
-using Random = UnityEngine.Random;
 
 public class NetworkController : MonoBehaviour, INetworkRunnerCallbacks
 {
@@ -17,6 +16,8 @@ public class NetworkController : MonoBehaviour, INetworkRunnerCallbacks
     [SerializeField] private NetworkRunner _networkRunner;
     [SerializeField] private NetworkSceneManagerDefault _networkSceneManagerDefault;
     [SerializeField] private NetworkObject _playerPrefab;
+
+    private Dictionary<PlayerRef, NetworkObject> _spawnedPlayers = new Dictionary<PlayerRef, NetworkObject>();
 
     private Vector3 _spawmPosition;
 
@@ -72,17 +73,33 @@ public class NetworkController : MonoBehaviour, INetworkRunnerCallbacks
 
         if (!_networkRunner.IsServer) return;
 
-        _networkRunner.Spawn(_playerPrefab, _spawmPosition, Quaternion.identity, player);
+        var PlayerSpawned = _networkRunner.Spawn(_playerPrefab, _spawmPosition, Quaternion.identity, player);
+        _spawnedPlayers.Add(player, PlayerSpawned);
     }
 
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
     {
+        if (!_networkRunner.IsServer) return;
+        if (_spawnedPlayers.Remove(player, out NetworkObject networkObject))
+        {
+            _networkRunner.Despawn(networkObject);
+        }
     }
 
     public void OnInput(NetworkRunner runner, NetworkInput input)
     {
-    }
+        var ip = InputPlayer.Instance;
+        if (ip == null) return;
 
+        var inputPlayer = new PlayerNetworkInput
+        {
+            Move = ip.CurrentMove,
+            Run = ip.IsRunning,
+            Jump = ip.IsJumping
+        };
+
+        input.Set(inputPlayer);
+    }
 
     //-----------------------------------------------------------------------------------//
     public void OnObjectExitAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player)

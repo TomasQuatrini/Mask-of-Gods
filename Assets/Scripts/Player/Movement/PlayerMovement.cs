@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IMovement
 {
     private Rigidbody _rb;
     private PlayerContext _ctx;
@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private InputPlayer _inputPlayer;
 
 
-    [SerializeField] private MovementSettings _settings; //como hacer para que no dependa del editor
+    [SerializeField] private MovementSettings _settings;
 
     private Vector3 _currentDirection = Vector3.zero;
     private bool _isRunning = false;
@@ -29,7 +29,10 @@ public class PlayerMovement : MonoBehaviour
         {
             _inputPlayer.OnMove += HandleMove;
             _inputPlayer.OnRun += HandleRun;
-            _inputPlayer.OnJump += HandleJump;
+            _inputPlayer.OnJump += HandleJump;            
+        }
+        if (_stamina != null)
+        {
             _stamina.HasStamina += HasStamina;
         }
     }
@@ -40,15 +43,14 @@ public class PlayerMovement : MonoBehaviour
         {
             _inputPlayer.OnMove -= HandleMove;
             _inputPlayer.OnRun -= HandleRun;
-            _inputPlayer.OnJump -= HandleJump;
+            _inputPlayer.OnJump -= HandleJump;            
+        }
+        if (_stamina != null)
+        {
             _stamina.HasStamina -= HasStamina;
         }
-    }
-
-    private void FixedUpdate()
-    {
-        //RbMoving();
-    }
+    }  
+    
     public Vector3 GetDirection()
     {
         return _currentDirection;
@@ -64,7 +66,10 @@ public class PlayerMovement : MonoBehaviour
     private void HandleMove(Vector3 dir)
     {
         _currentDirection = dir;
-        if (_moveCommand is null) { _moveCommand = new PlayerMoveCommand(_rb, _playerCollisionController, _settings, this); }
+        if (_moveCommand is null) 
+        { 
+            _moveCommand = new PlayerMoveCommand(_rb, _playerCollisionController, _settings, this);
+        }
         _moveCommand.Execute();
     }
 
@@ -75,7 +80,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleJump()
     {
-        if(_jumpCommand is null) { _jumpCommand = new PlayerJumpCommand(_rb, _playerCollisionController, _settings); }
+        if(_jumpCommand is null) 
+        {
+            _jumpCommand = new PlayerJumpCommand(_rb, _playerCollisionController, _settings);
+        }
         _jumpCommand.Execute();
     }
 

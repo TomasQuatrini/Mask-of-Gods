@@ -197,7 +197,7 @@ MonoBehaviour:
   _joinRoomButton: {fileID: 602477436}
   _networkRunner: {fileID: 127052222}
   _networkSceneManagerDefault: {fileID: 127052221}
-  _playerPrefab: {fileID: -8886285312572278481, guid: 35a5b1d81847bca41821dd3b7dd6146f, type: 3}
+  _playerPrefab: {fileID: 6283019697591807269, guid: 35a5b1d81847bca41821dd3b7dd6146f, type: 3}
 --- !u!1001 &130036160
 PrefabInstance:
   m_ObjectHideFlags: 0
