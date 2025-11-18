@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
         _ctx = GetComponentInParent<PlayerContext>();
         _rb = _ctx.Body;
         _inputPlayer = InputPlayer.Instance;
+        if ( _inputPlayer == null ) Debug.LogWarning("InputPlayer instance not found in PlayerMovement");
         _playerCollisionController = _ctx.CollisionController;
         _stamina = _ctx.Stamina;
         if (_inputPlayer != null)

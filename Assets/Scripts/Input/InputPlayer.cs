@@ -6,7 +6,6 @@ public class InputPlayer : MonoBehaviour
 {
     public static InputPlayer Instance { get; private set; }
     [SerializeField] private KeysMove _keys;
-
     
     public event Action<Vector3> OnMove;   // avisa la dirección (pero no qué hacer con ella)
     public event Action<bool> OnRun;       // avisa si se mantiene presionado correr

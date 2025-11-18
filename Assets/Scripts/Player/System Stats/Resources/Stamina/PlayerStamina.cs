@@ -29,6 +29,8 @@ public class PlayerStaminaSM : MonoBehaviour
     {        
         _ctx = GetComponentInParent<PlayerContext>();
         _input = InputPlayer.Instance;
+        if (_input == null)
+            Debug.LogError(" No se encontr? InputPlayer en la escena.");
 
         var core = _ctx.StatsComponent;
         Stats = core.Stats;        
