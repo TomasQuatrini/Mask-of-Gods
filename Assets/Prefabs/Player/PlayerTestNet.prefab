@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6115053558945978717}
   - component: {fileID: 575283923247715467}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Networking
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,6 +60,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerTestNet
       objectReference: {fileID: 0}
+    - target: {fileID: 1382397178787076059, guid: 8ab08cd77a13fd843a12c766fe5c0915, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489186424883712242, guid: 8ab08cd77a13fd843a12c766fe5c0915, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4740138910566905775, guid: 8ab08cd77a13fd843a12c766fe5c0915, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19.713696
@@ -99,6 +107,10 @@ PrefabInstance:
     - target: {fileID: 4740138910566905775, guid: 8ab08cd77a13fd843a12c766fe5c0915, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4968788885786030874, guid: 8ab08cd77a13fd843a12c766fe5c0915, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5520322409102799419, guid: 8ab08cd77a13fd843a12c766fe5c0915, type: 3}
       propertyPath: SortKey

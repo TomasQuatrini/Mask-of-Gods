@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3486508031804419856}
   - component: {fileID: 2855728939340950250}
   - component: {fileID: 9042016278937301599}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: PlayerTest
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 5623577008573895455}
   - component: {fileID: 1789929896594398393}
   - component: {fileID: 4085325821075832656}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: DependencyInjector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 6489353031852329517}
   - component: {fileID: 2236636149997042038}
   - component: {fileID: 4742076383709758182}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Logic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
