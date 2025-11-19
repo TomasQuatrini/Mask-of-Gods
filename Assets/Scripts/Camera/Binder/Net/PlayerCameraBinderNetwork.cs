@@ -1,16 +1,15 @@
+using Fusion;
 using UnityEngine;
 
-public class PlayerCameraBinder : MonoBehaviour
+public class PlayerCameraBinderNet : NetworkBehaviour
 {
     private PlayerContext _ctx;
 
-    private void Awake()
+    public override void Spawned()
     {
         _ctx = GetComponentInParent<PlayerContext>();
-    }
-
-    private void Start()
-    {
+        if (!Object.HasInputAuthority)
+            return;
         if (_ctx == null)
         {
             Debug.LogError("PlayerCameraBinder no encontró PlayerContext en los padres!");

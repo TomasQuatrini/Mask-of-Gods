@@ -111,6 +111,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 2855728939340950250, guid: 8ab08cd77a13fd843a12c766fe5c0915, type: 3}
     - {fileID: 908098808158874971, guid: 8ab08cd77a13fd843a12c766fe5c0915, type: 3}
+    - {fileID: 4085325821075832656, guid: 8ab08cd77a13fd843a12c766fe5c0915, type: 3}
     m_RemovedGameObjects:
     - {fileID: 626783993488816023, guid: 8ab08cd77a13fd843a12c766fe5c0915, type: 3}
     m_AddedGameObjects:
@@ -130,6 +131,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4968788885786030874, guid: 8ab08cd77a13fd843a12c766fe5c0915, type: 3}
       insertIndex: 1
       addedObject: {fileID: 1035807078126381179}
+    - targetCorrespondingSourceObject: {fileID: 4489186424883712242, guid: 8ab08cd77a13fd843a12c766fe5c0915, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7647567616594557170}
   m_SourcePrefab: {fileID: 100100000, guid: 8ab08cd77a13fd843a12c766fe5c0915, type: 3}
 --- !u!1 &718563448909056364 stripped
 GameObject:
@@ -177,6 +181,7 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: 9204820802198292184}
   - {fileID: 1035807078126381179}
+  - {fileID: 7647567616594557170}
   - {fileID: 575283923247715467}
   ForceRemoteRenderTimeframe: 0
 --- !u!143 &1963241056641614382
@@ -223,3 +228,20 @@ MonoBehaviour:
   braking: 10
   maxSpeed: 2
   rotationSpeed: 15
+--- !u!1 &8304846383527078532 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4489186424883712242, guid: 8ab08cd77a13fd843a12c766fe5c0915, type: 3}
+  m_PrefabInstance: {fileID: 5551942784944093814}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7647567616594557170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8304846383527078532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f5368c3aea9b6409960b400b8ed2c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

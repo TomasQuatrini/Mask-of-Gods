@@ -21,6 +21,18 @@ public class NetworkController : MonoBehaviour, INetworkRunnerCallbacks
 
     private Vector3 _spawmPosition;
 
+
+    private void Awake()
+    {
+        if (_networkRunner != null)
+        {
+            _networkRunner.AddCallbacks(this);
+        }
+        else
+        {
+            Debug.LogError("NetworkRunner is not assigned!");
+        }        
+    }
     private void Start()
     {
         _createRoomButton.onClick.AddListener(CreateRoom);
@@ -47,6 +59,7 @@ public class NetworkController : MonoBehaviour, INetworkRunnerCallbacks
             Debug.LogError($"Failed to create room: {result.ShutdownReason}");
             Debug.LogError($"Error: {result.ErrorMessage}");
         }
+        _networkRunner.ProvideInput = true;
     }
 
     private async void JoinRoom()
@@ -64,6 +77,7 @@ public class NetworkController : MonoBehaviour, INetworkRunnerCallbacks
         {
             Debug.LogError(result.ShutdownReason);
         }
+        _networkRunner.ProvideInput = true;
     }
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)

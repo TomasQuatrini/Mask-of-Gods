@@ -16,7 +16,7 @@ public class NetPlayerMovement : NetworkBehaviour, IMovement
 
     public override void FixedUpdateNetwork()
     {
-        if (!Object.HasInputAuthority) { return; }
+        if (!Object.HasStateAuthority) { return; }
         if (GetInput<PlayerNetworkInput>(out var inputPlayer))
         {
            inputPlayer.Move.Normalize();
