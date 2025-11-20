@@ -11,6 +11,9 @@ namespace System.Inventory
         public bool stackable = true;
         public int maxStack = 99;
 
+        [Header("UI")]
+        public Sprite Icon;
+
         public abstract void Use(); //inventory owner in parentesis
     }
 }

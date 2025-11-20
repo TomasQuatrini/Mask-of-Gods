@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HUDController : MonoBehaviour
+public class HUDResourcesBarController : MonoBehaviour
 {
-    public static HUDController Instance { get; private set; }
+    public static HUDResourcesBarController Instance { get; private set; }
     private Dictionary<BarType, UIBarView> _bars = new Dictionary<BarType, UIBarView>();
 
     private void Awake()
@@ -24,7 +24,16 @@ public class HUDController : MonoBehaviour
 
     public void BindPlayer(PlayerHealth playerHealth, PlayerStaminaSM playerStaminaSM)
     {
-        if(playerHealth == null && playerStaminaSM == null) return;
+        Debug.Log($"[HUDController] Binding player UI with Health: {playerHealth}, Stamina: {playerStaminaSM}");
+        if (playerHealth == null && playerStaminaSM == null)
+        {
+            Debug.LogError("[HUD] BindPlayer; Health o StaminaSM son null"); 
+            return;
+        }
+        _bars[BarType.Health].slider.maxValue = playerHealth.HealthResource.Max;
+        _bars[BarType.Health].slider.value = playerHealth.HealthResource.Current;
+        _bars[BarType.Stamina].slider.maxValue = playerStaminaSM.StaminaResource.Max;
+        _bars[BarType.Stamina].slider.value = playerStaminaSM.StaminaResource.Current;
         if (_bars.TryGetValue(BarType.Health, out var healthBar))
         {
             playerHealth.HealthResource.OnCurrentChanged += (currentHealth) =>
@@ -42,7 +51,7 @@ public class HUDController : MonoBehaviour
             {
                 staminaBar.slider.value = currentStamina;
             };
-            playerStaminaSM.StaminaResource.OnCurrentChanged += (maxStamina) =>
+            playerStaminaSM.StaminaResource.OnMaxChanged += (maxStamina) =>
             {
                 staminaBar.slider.maxValue = maxStamina;
             };

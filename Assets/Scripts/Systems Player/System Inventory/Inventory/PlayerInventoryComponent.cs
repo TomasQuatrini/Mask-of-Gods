@@ -21,24 +21,49 @@ namespace System.Inventory
             Mask = new Inventory(_maskSlots);
         }
 
-        public void AddItem(ItemData item, int quantity)
+        public bool AddItem(ItemData item, int quantity)
         {
-            Inventory target = item.Type switch
-            {
-                ItemType.Consumable => Consumable,
-                ItemType.Equippable => Equippable,
-                ItemType.Mask => Mask,
-            };
-            bool ok = target.AddItem(item, quantity);
-            if (!ok)
-            {
-                Debug.Log($"No existe espacio en el inventario de {item.Type}");
+            Debug.Log($"Intentando agregar {quantity} de {item.Name} en {item.Type}");
+            if (item == null)
+            { 
+                Debug.LogError("Item es null al intentar agregar al inventario"); 
+                return false; 
             }
-            else
+            Debug.Log($"Item {item.Name} de tipo {item.Type}");
+            Inventory target = null;
+            switch (item.Type)
             {
-                OnInventoryChanged?.Invoke();
-                Debug.Log($"Se agrego {quantity} de {item.Name} en {item.Type}");
+                case ItemType.Consumable:
+                    target = Consumable;
+                    break;
+                case ItemType.Equippable:
+                    target = Equippable;
+                    break;
+                case ItemType.Mask:
+                    target = Mask;
+                    break;
+                    default:
+                    Debug.LogError($"Tipo de item {item.Type} no soportado en el inventario del jugador");
+                    return false;
             }
+            
+            if (target == null)
+            {
+                Debug.LogError("Target inventory es null al intentar agregar item");
+                return false;
+            }
+            Debug.Log($"Agregando {quantity} de {item.Name} en inventario de {item.Type}");
+            bool added = target.AddItem(item, quantity);
+            Debug.Log(added
+                ? $"Se agregaron {quantity} de {item.Name} al inventario de {item.Type}"
+                : $"No se pudo agregar {item.Name} al inventario de {item.Type}");
+            if (!added)
+            {
+                Debug.LogWarning($"No se pudo agregar {item.Name} al inventario de {item.Type}");
+                return false ;
+            }
+            OnInventoryChanged?.Invoke();
+            return true;
         }
     }
 }

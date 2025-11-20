@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Inventory;
 
 public class PlayerContext : MonoBehaviour
 {
@@ -12,7 +13,10 @@ public class PlayerContext : MonoBehaviour
     public PlayerHealth Health { get; private set; }
     public PlayerStaminaSM Stamina { get; private set; }
     public PlayerStatsComponent StatsComponent { get; private set; }
+    public PlayerInventoryComponent Inventory { get; private set; }
 
+    [Header("Data Scriptable Objects")]
+    [SerializeField] public MovementSettings MovementSettings;
     private void Awake()
     {
         Body = GetComponent<Rigidbody>();
@@ -22,5 +26,6 @@ public class PlayerContext : MonoBehaviour
         Health = GetComponentInChildren<PlayerHealth>();
         Stamina = GetComponentInChildren<PlayerStaminaSM>();
         StatsComponent = GetComponentInChildren<PlayerStatsComponent>();
+        Inventory = GetComponentInChildren<PlayerInventoryComponent>();
     }
 }

@@ -6,6 +6,7 @@ namespace System.Inventory
     [System.Serializable]
     public class ConsumableItemData : ItemData
     {
+        [Header("Consumable Item Data")]
         public int Amount;
         new bool stackable = true;
 

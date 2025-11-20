@@ -21,7 +21,7 @@ namespace System.Inventory
             { 
                 foreach (var slot in slots)
                 {
-                    if (slot.IsEmpty && slot.stack.item == item)
+                    if (!slot.IsEmpty && slot.stack.item == item)
                     {
                         remaining = slot.Add(item, remaining);
                         if (remaining <= 0)

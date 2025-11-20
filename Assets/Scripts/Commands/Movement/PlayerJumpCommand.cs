@@ -1,4 +1,3 @@
-using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class PlayerJumpCommand : ICommand
@@ -35,7 +34,7 @@ public class PlayerJumpCommand : ICommand
     {
         _jumpCount = _settings.maxJumpCount;
     }
-    private void OnDestroy() //cual seria?
+    public void OnDestroy() //cual seria?
     {
         _playerCollisionController.PlayerCollidedWithGround -= CountJumpsReset;
     }
