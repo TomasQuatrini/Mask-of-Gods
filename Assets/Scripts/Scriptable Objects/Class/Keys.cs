@@ -11,4 +11,5 @@ public class KeysMove : ScriptableObject
     public KeyCode jump;
     public KeyCode attack;
     public KeyCode specialAttack1;
+    public KeyCode pickup;
 }
