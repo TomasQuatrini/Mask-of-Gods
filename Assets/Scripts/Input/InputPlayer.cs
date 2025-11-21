@@ -9,6 +9,7 @@ public class InputPlayer : MonoBehaviour
     public Vector3 CurrentMove { get; private set; }
     public bool IsRunning { get; private set; }
     public bool IsJumping { get; private set; }
+    public bool WantsToPickup { get; private set; }
 
     [SerializeField] private KeysMove _keys;    
 
@@ -47,7 +48,16 @@ public class InputPlayer : MonoBehaviour
         IsRunning = _isRunning;
 
         OnRun?.Invoke(_isRunning);
-        OnMove?.Invoke(_moveInput);       
+        OnMove?.Invoke(_moveInput);
+        
+        if (Input.GetKeyDown(_keys.pickup))
+        {
+            WantsToPickup = true;
+        }
+        else
+        {
+            WantsToPickup = false;
+        }
 
         if (Input.GetKeyDown(_keys.attack))
         { 
