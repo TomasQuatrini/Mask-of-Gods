@@ -30,7 +30,7 @@ public class ItemDataBase : ScriptableObject
 
     public ItemData GetItemById(string id)
     {
-        if (_itemDictionary == null)
+        if (_itemDictionary == null || _itemDictionary.Count == 0)
         {
             BuildMap();
         }

@@ -18,7 +18,7 @@ namespace System.Inventory
             }
             else
             {
-                Destroy(gameObject);
+                Debug.Log("No se pudo despawn el pickup, Runner o Object es null");
             }
         }
 
