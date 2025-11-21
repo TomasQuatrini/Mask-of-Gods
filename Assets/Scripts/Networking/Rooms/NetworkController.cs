@@ -4,6 +4,7 @@ using UnityEngine;
 using Fusion;
 using Fusion.Sockets;
 using UnityEngine.UI;
+using System.Inventory;
 
 public class NetworkController : MonoBehaviour, INetworkRunnerCallbacks
 {
@@ -16,8 +17,13 @@ public class NetworkController : MonoBehaviour, INetworkRunnerCallbacks
     [SerializeField] private NetworkRunner _networkRunner;
     [SerializeField] private NetworkSceneManagerDefault _networkSceneManagerDefault;
     [SerializeField] private NetworkObject _playerPrefab;
+    [SerializeField] private NetworkObject _staminaSpawnerPrefab;
+    [SerializeField] private NetworkObject _healthSpawnerPrefab;
 
     private Dictionary<PlayerRef, NetworkObject> _spawnedPlayers = new Dictionary<PlayerRef, NetworkObject>();
+
+    private Vector3 _staminaSpawnerPosition;
+    private Vector3 _healthSpawnerPosition;
 
     private Vector3 _spawmPosition;
 
@@ -38,9 +44,15 @@ public class NetworkController : MonoBehaviour, INetworkRunnerCallbacks
         _createRoomButton.onClick.AddListener(CreateRoom);
         _joinRoomButton.onClick.AddListener(JoinRoom);
         if (UniversalSpawn.Instance != null)
+        {
             _spawmPosition = UniversalSpawn.Instance.Position();
+            _staminaSpawnerPosition = UniversalSpawn.Instance.StaminaSpawn();
+            _healthSpawnerPosition = UniversalSpawn.Instance.HealthSpawn();
+        }
         else
+        {
             Debug.LogError("UniversalSpawn instance not found!");
+        }
     }
 
     private async void CreateRoom()
@@ -60,6 +72,7 @@ public class NetworkController : MonoBehaviour, INetworkRunnerCallbacks
             Debug.LogError($"Error: {result.ErrorMessage}");
         }
         _networkRunner.ProvideInput = true;
+        SpawnObjects();
     }
 
     private async void JoinRoom()
@@ -88,6 +101,7 @@ public class NetworkController : MonoBehaviour, INetworkRunnerCallbacks
         if (!_networkRunner.IsServer) return;
 
         var PlayerSpawned = _networkRunner.Spawn(_playerPrefab, _spawmPosition, Quaternion.identity, player);
+        
         _spawnedPlayers.Add(player, PlayerSpawned);
     }
 
@@ -113,6 +127,13 @@ public class NetworkController : MonoBehaviour, INetworkRunnerCallbacks
         };
 
         input.Set(inputPlayer);
+    }
+
+    public void SpawnObjects()
+    {
+        if (!_networkRunner.IsServer) return;
+        _networkRunner.Spawn(_staminaSpawnerPrefab, _staminaSpawnerPosition, Quaternion.identity);
+        _networkRunner.Spawn(_healthSpawnerPrefab, _healthSpawnerPosition, Quaternion.identity);
     }
 
     //-----------------------------------------------------------------------------------//
