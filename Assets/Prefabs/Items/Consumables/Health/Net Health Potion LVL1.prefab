@@ -72,7 +72,7 @@ PrefabInstance:
       addedObject: {fileID: 6130297008420010148}
     - targetCorrespondingSourceObject: {fileID: 1321821473815790296, guid: 1c6ce7518f16189468e4a528a80f14c9, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6756497012318737974}
+      addedObject: {fileID: -7932779719015540061}
   m_SourcePrefab: {fileID: 100100000, guid: 1c6ce7518f16189468e4a528a80f14c9, type: 3}
 --- !u!1 &3674431632705304398 stripped
 GameObject:
@@ -124,7 +124,7 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 6130297008420010148}
-  - {fileID: 6756497012318737974}
+  - {fileID: -7932779719015540061}
   ForceRemoteRenderTimeframe: 0
 --- !u!114 &6130297008420010148
 MonoBehaviour:
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemData: {fileID: 11400000, guid: 8e0eb035ddb1a744db9faf743b4e027a, type: 2}
   _quantity: 1
---- !u!114 &6756497012318737974
+--- !u!114 &-7932779719015540061
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -12,9 +12,13 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5281698729245837312, guid: 446ef1333a8dfeb47b1c858555d3cd6b, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 5615776239972352513, guid: 446ef1333a8dfeb47b1c858555d3cd6b, type: 3}
       propertyPath: m_Name
-      value: Net Stamina Potion LVL1 Variant
+      value: Net Stamina Potion LVL1
       objectReference: {fileID: 0}
     - target: {fileID: 8842827656030230804, guid: 446ef1333a8dfeb47b1c858555d3cd6b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -72,7 +76,7 @@ PrefabInstance:
       addedObject: {fileID: 6412838884131898061}
     - targetCorrespondingSourceObject: {fileID: 5615776239972352513, guid: 446ef1333a8dfeb47b1c858555d3cd6b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -8521257302519985824}
+      addedObject: {fileID: -2627180233967753460}
   m_SourcePrefab: {fileID: 100100000, guid: 446ef1333a8dfeb47b1c858555d3cd6b, type: 3}
 --- !u!1 &9032909116466774787 stripped
 GameObject:
@@ -97,7 +101,7 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 6412838884131898061}
-  - {fileID: -8521257302519985824}
+  - {fileID: -2627180233967753460}
   ForceRemoteRenderTimeframe: 0
 --- !u!54 &-3458981847125330331
 Rigidbody:
@@ -140,7 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemData: {fileID: 11400000, guid: 1ed744c131fe158419241881192551c1, type: 2}
   _quantity: 1
---- !u!114 &-8521257302519985824
+--- !u!114 &-2627180233967753460
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

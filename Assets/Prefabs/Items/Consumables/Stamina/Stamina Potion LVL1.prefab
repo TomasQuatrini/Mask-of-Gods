@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: -6946964450093703460}
   - component: {fileID: 1079045293032540029}
   - component: {fileID: 1936573437144869295}
-  m_Layer: 0
+  - component: {fileID: 5281698729245837312}
+  m_Layer: 8
   m_Name: Stamina Potion LVL1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,3 +152,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemData: {fileID: 11400000, guid: 1ed744c131fe158419241881192551c1, type: 2}
   _quantity: 1
+--- !u!135 &5281698729245837312
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5615776239972352513}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
