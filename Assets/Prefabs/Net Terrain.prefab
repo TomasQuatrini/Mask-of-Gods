@@ -1,129 +1,160 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1080252748753426596
-PrefabInstance:
+--- !u!1 &968487439872997178
+GameObject:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 6638414480745878548}
-    m_Modifications:
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.400033
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.50000095
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.953599
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9032909116466774787, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_Name
-      value: Net Stamina Potion LVL1 Variant (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
---- !u!4 &4967950356491960498 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-  m_PrefabInstance: {fileID: 1080252748753426596}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &2461831525016597360
-PrefabInstance:
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2176331491039913306}
+  m_Layer: 0
+  m_Name: Spawn_4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2176331491039913306
+Transform:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 6638414480745878548}
-    m_Modifications:
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.298177
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.50000095
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3.4754925
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9032909116466774787, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_Name
-      value: Net Stamina Potion LVL1 Variant (3)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
---- !u!4 &7504771708542528358 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-  m_PrefabInstance: {fileID: 2461831525016597360}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968487439872997178}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -5.35}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6638414480745878548}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5326737953752146764
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4950077706183567238}
+  m_Layer: 0
+  m_Name: Spawn_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4950077706183567238
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5326737953752146764}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.32, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6638414480745878548}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6270160482116161281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6666630485515279141}
+  m_Layer: 0
+  m_Name: Spawn_5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6666630485515279141
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6270160482116161281}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.49, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6638414480745878548}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6613755905761480797
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7760069098768847025}
+  m_Layer: 0
+  m_Name: Spawn_3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7760069098768847025
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6613755905761480797}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.43, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6638414480745878548}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6673830315049835283
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3930511888815857724}
+  m_Layer: 0
+  m_Name: Spawn_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3930511888815857724
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6673830315049835283}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 8.99}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6638414480745878548}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4936959430650088377
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -187,404 +218,73 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1775536171074658221, guid: 3d39f53361f72f045a6c25b728cb3d8e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4053200776394211513}
+      addedObject: {fileID: 4950077706183567238}
     - targetCorrespondingSourceObject: {fileID: 1775536171074658221, guid: 3d39f53361f72f045a6c25b728cb3d8e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4967950356491960498}
+      addedObject: {fileID: 3930511888815857724}
     - targetCorrespondingSourceObject: {fileID: 1775536171074658221, guid: 3d39f53361f72f045a6c25b728cb3d8e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2542346021162464383}
+      addedObject: {fileID: 7760069098768847025}
     - targetCorrespondingSourceObject: {fileID: 1775536171074658221, guid: 3d39f53361f72f045a6c25b728cb3d8e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7504771708542528358}
+      addedObject: {fileID: 2176331491039913306}
     - targetCorrespondingSourceObject: {fileID: 1775536171074658221, guid: 3d39f53361f72f045a6c25b728cb3d8e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8924347993635201706}
-    - targetCorrespondingSourceObject: {fileID: 1775536171074658221, guid: 3d39f53361f72f045a6c25b728cb3d8e, type: 3}
+      addedObject: {fileID: 6666630485515279141}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8229086834729726656, guid: 3d39f53361f72f045a6c25b728cb3d8e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 9190910303292229622}
-    - targetCorrespondingSourceObject: {fileID: 1775536171074658221, guid: 3d39f53361f72f045a6c25b728cb3d8e, type: 3}
+      addedObject: {fileID: 2338567421895380023}
+    - targetCorrespondingSourceObject: {fileID: 8229086834729726656, guid: 3d39f53361f72f045a6c25b728cb3d8e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7578007795113165798}
-    - targetCorrespondingSourceObject: {fileID: 1775536171074658221, guid: 3d39f53361f72f045a6c25b728cb3d8e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8825392536210576255}
-    m_AddedComponents: []
+      addedObject: {fileID: 5128332439643428111}
   m_SourcePrefab: {fileID: 100100000, guid: 3d39f53361f72f045a6c25b728cb3d8e, type: 3}
+--- !u!1 &3940663493132384633 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8229086834729726656, guid: 3d39f53361f72f045a6c25b728cb3d8e, type: 3}
+  m_PrefabInstance: {fileID: 4936959430650088377}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2338567421895380023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3940663493132384633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be3bbaa815e63f4a8383c2e579e2e93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _potionPrefab:
+    RawGuidValue: 29646137995a9da409f9fd7e28b62148
+  _spawnPoints:
+  - {fileID: 4950077706183567238}
+  - {fileID: 3930511888815857724}
+  - {fileID: 7760069098768847025}
+  - {fileID: 2176331491039913306}
+  - {fileID: 6666630485515279141}
+--- !u!114 &5128332439643428111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3940663493132384633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 3823453342
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 2338567421895380023}
+  ForceRemoteRenderTimeframe: 0
 --- !u!4 &6638414480745878548 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1775536171074658221, guid: 3d39f53361f72f045a6c25b728cb3d8e, type: 3}
   m_PrefabInstance: {fileID: 4936959430650088377}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &6931853506758887362
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 6638414480745878548}
-    m_Modifications:
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 5.7167025
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.50000095
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.42942047
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3674431632705304398, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_Name
-      value: Net Health Potion LVL1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
---- !u!4 &9190910303292229622 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-  m_PrefabInstance: {fileID: 6931853506758887362}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &7235014142217052830
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 6638414480745878548}
-    m_Modifications:
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 7.16
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3674431632705304398, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_Name
-      value: Net Health Potion LVL1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
---- !u!4 &8924347993635201706 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-  m_PrefabInstance: {fileID: 7235014142217052830}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &7333091580538639179
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 6638414480745878548}
-    m_Modifications:
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 12.07293
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.50000095
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.2077723
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3674431632705304398, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_Name
-      value: Net Health Potion LVL1 (2)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
---- !u!4 &8825392536210576255 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-  m_PrefabInstance: {fileID: 7333091580538639179}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &7585287305286970473
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 6638414480745878548}
-    m_Modifications:
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.7156487
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.5000019
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 6.2365856
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9032909116466774787, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_Name
-      value: Net Stamina Potion LVL1 Variant (2)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
---- !u!4 &2542346021162464383 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-  m_PrefabInstance: {fileID: 7585287305286970473}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &8229127653550741679
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 6638414480745878548}
-    m_Modifications:
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.457406
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.75583076
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9032909116466774787, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-      propertyPath: m_Name
-      value: Net Stamina Potion LVL1 Variant
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
---- !u!4 &4053200776394211513 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5335745907049420822, guid: 29646137995a9da409f9fd7e28b62148, type: 3}
-  m_PrefabInstance: {fileID: 8229127653550741679}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &8544513494253454290
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 6638414480745878548}
-    m_Modifications:
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 7.639735
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.1369362
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3674431632705304398, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-      propertyPath: m_Name
-      value: Net Health Potion LVL1 (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
---- !u!4 &7578007795113165798 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2287345032272724020, guid: 17fac77998e0ece4185e9e5e8fb44385, type: 3}
-  m_PrefabInstance: {fileID: 8544513494253454290}
   m_PrefabAsset: {fileID: 0}
