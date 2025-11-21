@@ -103,6 +103,7 @@ PrefabInstance:
     - {fileID: 1751703301690673257, guid: 8ab08cd77a13fd843a12c766fe5c0915, type: 3}
     - {fileID: 5588869975464472550, guid: 8ab08cd77a13fd843a12c766fe5c0915, type: 3}
     - {fileID: 2855728939340950250, guid: 8ab08cd77a13fd843a12c766fe5c0915, type: 3}
+    - {fileID: 4388165445218720570, guid: 8ab08cd77a13fd843a12c766fe5c0915, type: 3}
     m_RemovedGameObjects:
     - {fileID: 626783993488816023, guid: 8ab08cd77a13fd843a12c766fe5c0915, type: 3}
     - {fileID: 4827883859131958407, guid: 8ab08cd77a13fd843a12c766fe5c0915, type: 3}
@@ -147,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6775b53222be2584aaacfe6b9cf3d6a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _movementSettings: {fileID: 11400000, guid: ae5f94f46e176474dbc6e8532c87b793, type: 2}
 --- !u!1 &6783323071240056237 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1382397178787076059, guid: 8ab08cd77a13fd843a12c766fe5c0915, type: 3}
@@ -231,7 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74fef71a02a8d0e40a1a4e0b03521597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pickupRadius: 1
+  _pickupRadius: 1.4
   _pickupMask:
     serializedVersion: 2
     m_Bits: 256

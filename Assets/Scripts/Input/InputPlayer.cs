@@ -11,17 +11,21 @@ public class InputPlayer : MonoBehaviour
     public bool IsJumping { get; private set; }
     public bool WantsToPickup { get; private set; }
 
-    [SerializeField] private KeysMove _keys;    
+    [SerializeField] private KeysMove _keys;
 
-    public event Action<Vector3> OnMove;   
-    public event Action<bool> OnRun;       
+    public event Action<Vector3> OnMove;
+    public event Action<bool> OnRun;
     public event Action OnJump;
     public event Action OnAttack;
     public event Action OnSpecial1;
 
     private Vector3 _moveInput;
-    private bool _isRunning;
-    
+
+    [Header("Latches for networking")]
+
+    private bool _wantsToPickupLatch;
+    private bool _isJumpingLatch;   
+
     void Awake()
     {
         if (Instance == null)
@@ -29,6 +33,29 @@ public class InputPlayer : MonoBehaviour
         else
             Destroy(gameObject);
     }
+
+    #region Properties with Latches
+    public bool ConsumeWantsToPickup()
+    {
+        if (_wantsToPickupLatch)
+        {
+            _wantsToPickupLatch = false;
+            return true;
+        }
+        return false;
+    }
+
+    public bool ConsumeIsJumping()
+    {
+        if (_isJumpingLatch)
+        {
+            _isJumpingLatch = false;
+            return true;
+        }
+        return false;
+    }
+    #endregion
+
     void Update()
     {
         _moveInput = Vector3.zero;
@@ -44,12 +71,53 @@ public class InputPlayer : MonoBehaviour
             _moveInput.x += 1;
 
         CurrentMove = _moveInput;
-        _isRunning = Input.GetKey(_keys.run);
-        IsRunning = _isRunning;
-
-        OnRun?.Invoke(_isRunning);
         OnMove?.Invoke(_moveInput);
-        
+        GetRunning();
+        GetJumping();
+        GetPickup();
+        if (Input.GetKeyDown(_keys.attack))
+        {
+            OnAttack?.Invoke();
+        }
+        if (Input.GetKeyDown(_keys.specialAttack1))
+        {
+            OnSpecial1?.Invoke();
+        }
+
+        if (WantsToPickup)
+        {
+            _wantsToPickupLatch = true;
+            WantsToPickup = false;
+        }
+        if (IsJumping)
+        {
+            _isJumpingLatch = true;
+            IsJumping = false;
+        }
+    }
+
+    private void GetRunning()
+    {        
+        bool pressed = Input.GetKey(_keys.run);
+        IsRunning = pressed;
+        OnRun?.Invoke(pressed);
+    }
+
+    private void GetJumping()
+    {
+        if (Input.GetKeyDown(_keys.jump))
+        {
+            OnJump?.Invoke();
+            IsJumping = true;
+        }
+        else
+        {
+            IsJumping = false;
+        }
+    }
+
+    private void GetPickup()
+    {
         if (Input.GetKeyDown(_keys.pickup))
         {
             WantsToPickup = true;
@@ -58,26 +126,5 @@ public class InputPlayer : MonoBehaviour
         {
             WantsToPickup = false;
         }
-
-        if (Input.GetKeyDown(_keys.attack))
-        { 
-            Debug.Log("LLamando Ataque");
-            OnAttack?.Invoke(); 
-        }
-        if (Input.GetKeyDown(_keys.specialAttack1))
-        {
-            Debug.Log("LLamando Ataque Especial");
-            OnSpecial1?.Invoke();
-        }
-        if (Input.GetKeyDown(_keys.jump))
-        {
-            OnJump?.Invoke();
-            IsJumping = true;
-        }
-        else         
-        {
-            IsJumping = false;
-        }
     }
 }
-

@@ -97,11 +97,13 @@ public class NetworkConnectionManager : MonoBehaviour, INetworkRunnerCallbacks
         var inputPlayer = new PlayerNetworkInput
         {
             Move = ip.CurrentMove,
-            Run = ip.IsRunning,
-            Jump = ip.IsJumping,
-            Pickup = ip.WantsToPickup
+            IsRun = ip.IsRunning,
+            IsJump = ip.ConsumeIsJumping(),
+            IsPickup = ip.ConsumeWantsToPickup()
         };
-
+        //inputPlayer.buttons.Set(PlayerNetworkInput.RUN, ip.IsRunning);
+        //inputPlayer.buttons.Set(PlayerNetworkInput.JUMP, ip.ConsumeIsJumping());
+        //inputPlayer.buttons.Set(PlayerNetworkInput.PICKUP, ip.ConsumeWantsToPickup());
         input.Set(inputPlayer);
     }
         

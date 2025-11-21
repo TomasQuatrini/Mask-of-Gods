@@ -33,7 +33,7 @@ namespace System.Inventory
 
             if (!GetInput(out PlayerNetworkInput input)) { Debug.LogWarning("[Collector] No se pudo obtener el input"); return; }
             Debug.Log("[Collector] FixedUpdateNetwork - Input obtenido");
-            if (!input.Pickup) return;
+            if (!input.IsPickup) return;
             Debug.Log("[Collector] Intentando recoger ítem...");
 
             var center = transform.position;
