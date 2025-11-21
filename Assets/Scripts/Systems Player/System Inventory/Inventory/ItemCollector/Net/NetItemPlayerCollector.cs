@@ -16,28 +16,12 @@ namespace System.Inventory
         }
 
         private void OnTriggerEnter(Collider other)
-        {
-            Debug.Log($"[Collector] OnTriggerEnter en {other.name} en {Object.name}");
-            if (!Object.HasInputAuthority)
-            {
-                Debug.Log("[Collector] No soy InputAuthority, no puedo solicitar el pickup");
-                return;
-            }
-            if (_inventoryComponent == null)
-            {
-                return;
-            }
-            if (!other.TryGetComponent<NetItemPickup>(out var pickup))
-            {
-                Debug.Log("[Collector] No es pickable");
-                return;
-            }
+        {            
+            if (!HasInputAuthority) return;            
+            if (_inventoryComponent == null) return;            
+            if (!other.TryGetComponent<NetItemPickup>(out var pickup)) return;
             var no = pickup.GetComponent<NetworkObject>();
-            if (no == null)
-            {
-                Debug.Log("[Collector] pickup.Object es null, no tiene NetworkObject");
-                return;
-            }
+            if (no == null) return;
             Debug.Log($"[Collector] Detecte pickup {pickup.name}. " + $"InputAuth= {Object.HasInputAuthority}, StateAuth= {Object.HasStateAuthority}");
             Rpc_RequestPickup(no);
         }
@@ -45,44 +29,34 @@ namespace System.Inventory
         [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority)]
         public void Rpc_RequestPickup(NetworkObject pickableObject, RpcInfo info = default)
         {
-            Debug.Log($"[Collector] Rpc_RequestPickup en {Object.name} " + $"SoyStateAuth={Object.HasStateAuthority}");
-            if (!Object.HasStateAuthority)
-            {
-                Debug.Log("[Collector] No soy StateAuthority, no puedo procesar el pickup");
-                return;
-            }
-            if (pickableObject == null)
-            { 
-                Debug.Log("[Collector] pickableObject es null");
-                return; 
-            }
-            if (!pickableObject.TryGetComponent<NetItemPickup>(out var itemPickUp))
-            {
-                Debug.Log("[Collector] El objeto no tiene componente NetItemPickup");
-                return;
-            }
-            if (_ctx == null)
-            {
-                _ctx = GetComponentInParent<PlayerContext>();
-            }
-            if (_inventoryComponent == null && _ctx != null)
-            {
-                Debug.Log("[Collector] InventoryComponent es null, intentando obtenerlo del contexto");
-                _inventoryComponent = _ctx.Inventory;
-            }
+            if (!HasStateAuthority) return;
+            if (pickableObject == null) return;
+            if (!pickableObject.TryGetComponent<NetItemPickup>(out var itemPickUp)) return;            
+            if (_ctx == null) _ctx = GetComponentInParent<PlayerContext>();            
+            if (_inventoryComponent == null && _ctx != null) _inventoryComponent = _ctx.Inventory;            
             var itemData = itemPickUp.GetItemData();
             var quantity = itemPickUp.GetQuantity();
-            if (itemData == null)
-            {
-                Debug.Log("[Collector] itemData es null");
-                return;
-            }
+            if (itemData == null) return;            
             bool added = _inventoryComponent.AddItem(itemData, quantity);
             Debug.Log(added
                 ? $"[Collector] Se agregaron {quantity} de {itemData.Name} al inventario"
                 : $"[Collector] No se pudo agregar {itemData.Name} al inventario");
             if (!added) return;
             itemPickUp.OnPicked();
+        }
+
+        [Rpc(RpcSources.StateAuthority, RpcTargets.InputAuthority)]
+        public void Rpc_ConfirmPickup(int itemId, int quantity, RpcInfo info = default)
+        {
+            if (!HasInputAuthority) return;
+            if (_inventoryComponent == null)
+            {
+                if (_ctx == null) _ctx = GetComponentInParent<PlayerContext>();
+                _inventoryComponent = _ctx.Inventory;
+                if (_inventoryComponent == null) return;
+            }
+            //var itemData = ItemDatabase.Instance.GetItemById(itemId);
+            Debug.Log($"[Collector] Confirmacion de pickup: {quantity} de ");
         }
     }
 }
