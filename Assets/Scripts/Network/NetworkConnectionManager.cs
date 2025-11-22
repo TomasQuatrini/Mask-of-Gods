@@ -99,11 +99,12 @@ public class NetworkConnectionManager : MonoBehaviour, INetworkRunnerCallbacks
             Move = ip.CurrentMove,
             IsRun = ip.IsRunning,
             IsJump = ip.ConsumeIsJumping(),
-            IsPickup = ip.ConsumeWantsToPickup()
+            IsPickup = ip.ConsumeWantsToPickup(),
+            TakeDamaged = ip.ConsumeTakeDamaged(),
+            ConsumeHealth = ip.ConsumePotionHealth(),
+            ConsumeStamina = ip.ConsumePotionStamina()
         };
-        //inputPlayer.buttons.Set(PlayerNetworkInput.RUN, ip.IsRunning);
-        //inputPlayer.buttons.Set(PlayerNetworkInput.JUMP, ip.ConsumeIsJumping());
-        //inputPlayer.buttons.Set(PlayerNetworkInput.PICKUP, ip.ConsumeWantsToPickup());
+        
         input.Set(inputPlayer);
     }
         

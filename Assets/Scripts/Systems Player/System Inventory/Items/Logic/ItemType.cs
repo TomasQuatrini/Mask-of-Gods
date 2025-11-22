@@ -4,4 +4,9 @@ namespace System.Inventory
     {
         Consumable, Equippable, Mask
     }
+
+    public enum ConsumableType
+    {
+        Health, Stamina
+    }
 }

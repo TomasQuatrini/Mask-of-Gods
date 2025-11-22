@@ -11,6 +11,11 @@ public class InputPlayer : MonoBehaviour
     public bool IsJumping { get; private set; }
     public bool WantsToPickup { get; private set; }
 
+    public bool TakeDamaged { get; private set; } //provisorio
+    public bool ConsumePotion_Stamina { get; private set; }
+    public bool ConsumePotion_Health { get; private set; }
+
+
     [SerializeField] private KeysMove _keys;
 
     public event Action<Vector3> OnMove;
@@ -22,9 +27,11 @@ public class InputPlayer : MonoBehaviour
     private Vector3 _moveInput;
 
     [Header("Latches for networking")]
-
     private bool _wantsToPickupLatch;
-    private bool _isJumpingLatch;   
+    private bool _isJumpingLatch;
+    private bool _takeDamagedLatch;
+    private bool _consumePotionStaminaLatch;
+    private bool _consumePotionHealthLatch;
 
     void Awake()
     {
@@ -54,6 +61,36 @@ public class InputPlayer : MonoBehaviour
         }
         return false;
     }
+
+    public bool ConsumeTakeDamaged()
+    {
+        if (_takeDamagedLatch)
+        {
+            _takeDamagedLatch = false;
+            return true;
+        }
+        return false;
+    }
+
+    public bool ConsumePotionStamina()
+    {
+        if (_consumePotionStaminaLatch)
+        {
+            _consumePotionStaminaLatch = false;
+            return true;
+        }
+        return false;
+    }
+
+    public bool ConsumePotionHealth()
+    {
+        if (_consumePotionHealthLatch)
+        {
+            _consumePotionHealthLatch = false;
+            return true;
+        }
+        return false;        
+    }
     #endregion
 
     void Update()
@@ -75,6 +112,11 @@ public class InputPlayer : MonoBehaviour
         GetRunning();
         GetJumping();
         GetPickup();
+        GetTakeDamaged();
+        GetConsumePotiomHealth();
+        GetConsumePotionStamina();
+
+
         if (Input.GetKeyDown(_keys.attack))
         {
             OnAttack?.Invoke();
@@ -93,6 +135,21 @@ public class InputPlayer : MonoBehaviour
         {
             _isJumpingLatch = true;
             IsJumping = false;
+        }
+        if (ConsumePotion_Health)
+        {
+            _consumePotionHealthLatch = true;
+            ConsumePotion_Health = false;
+        }
+        if (ConsumePotion_Stamina)
+        {
+            _consumePotionStaminaLatch = true;
+            ConsumePotion_Stamina = false;
+        }
+        if (TakeDamaged)
+        {
+            _takeDamagedLatch = true;
+            TakeDamaged = false;
         }
     }
 
@@ -125,6 +182,42 @@ public class InputPlayer : MonoBehaviour
         else
         {
             WantsToPickup = false;
+        }
+    }
+
+    private void GetTakeDamaged()
+    {
+        if(Input.GetKeyDown(_keys.takedamage))
+        {
+            TakeDamaged = true;
+        }
+        else
+        {
+            TakeDamaged = false;
+        }
+    }
+
+    private void GetConsumePotionStamina()
+    {
+        if (Input.GetKeyDown(_keys.consumeS))
+        {
+            ConsumePotion_Stamina = true;
+        }
+        else
+        {
+            ConsumePotion_Stamina = false;
+        }
+    }
+
+    private void GetConsumePotiomHealth()
+    {
+        if (Input.GetKeyDown(_keys.consumeH))
+        {
+            ConsumePotion_Health = true;
+        }
+        else
+        {
+            ConsumePotion_Health = false;
         }
     }
 }

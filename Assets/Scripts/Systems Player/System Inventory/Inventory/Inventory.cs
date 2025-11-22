@@ -6,7 +6,7 @@ namespace System.Inventory
     public class Inventory
     {
         public List<Slot> slots;
-        public Inventory(int slotCount) 
+        public Inventory(int slotCount)
         {
             slots = new List<Slot>(slotCount);
             for (int i = 0; i < slotCount; i++)
@@ -18,7 +18,7 @@ namespace System.Inventory
         {
             int remaining = quantity;
             if (item.stackable)
-            { 
+            {
                 foreach (var slot in slots)
                 {
                     if (!slot.IsEmpty && slot.stack.item == item)
@@ -31,13 +31,29 @@ namespace System.Inventory
             }
             foreach (var slot in slots)
             {
-                if(slot.IsEmpty)
+                if (slot.IsEmpty)
                 {
                     remaining = slot.Add(item, remaining);
                     if (remaining <= 0)
                     {
                         return true;
                     }
+                }
+            }
+            return false;
+        }
+
+        public bool RemoveItem(ItemData item)
+        {
+            int consume = 1;
+            if (item.stackable)
+            {
+                foreach (var slot in slots)
+                {
+                    if (slot.IsEmpty) continue;
+                    if (slot.stack.item != item) continue;
+                    slot.Remove(item, consume);
+                    return true;
                 }
             }
             return false;

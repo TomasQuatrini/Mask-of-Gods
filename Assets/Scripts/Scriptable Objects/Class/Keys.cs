@@ -12,4 +12,7 @@ public class KeysMove : ScriptableObject
     public KeyCode attack;
     public KeyCode specialAttack1;
     public KeyCode pickup;
+    public KeyCode takedamage;
+    public KeyCode consumeH;
+    public KeyCode consumeS;
 }

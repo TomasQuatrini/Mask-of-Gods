@@ -23,13 +23,10 @@ namespace System.Inventory
 
         public bool AddItem(ItemData item, int quantity)
         {
-            Debug.Log($"Intentando agregar {quantity} de {item.Name} en {item.Type}");
             if (item == null)
             { 
-                Debug.LogError("Item es null al intentar agregar al inventario"); 
                 return false; 
             }
-            Debug.Log($"Item {item.Name} de tipo {item.Type}");
             Inventory target = null;
             switch (item.Type)
             {
@@ -43,27 +40,49 @@ namespace System.Inventory
                     target = Mask;
                     break;
                     default:
-                    Debug.LogError($"Tipo de item {item.Type} no soportado en el inventario del jugador");
                     return false;
             }
-            
             if (target == null)
             {
-                Debug.LogError("Target inventory es null al intentar agregar item");
                 return false;
             }
-            Debug.Log($"Agregando {quantity} de {item.Name} en inventario de {item.Type}");
-            bool added = target.AddItem(item, quantity);
-            Debug.Log(added
-                ? $"Se agregaron {quantity} de {item.Name} al inventario de {item.Type}"
-                : $"No se pudo agregar {item.Name} al inventario de {item.Type}");
+            bool added = target.AddItem(item, quantity);            
             if (!added)
             {
-                Debug.LogWarning($"No se pudo agregar {item.Name} al inventario de {item.Type}");
                 return false ;
             }
             OnInventoryChanged?.Invoke();
             return true;
+        }
+
+        public bool ConsumeItem(ItemData item)
+        {
+            if (item == null) 
+            { 
+                return false;
+            }
+            Inventory target = null;
+            switch (item.Type)
+            {
+                case ItemType.Consumable:
+                    target = Consumable;
+                    break;
+                case ItemType.Equippable:
+                    target = Equippable;
+                    break;
+                case ItemType.Mask:
+                    target = Mask;
+                    break;
+                default:
+                    return false;
+            }
+            if (target == null) 
+            { 
+                return false;
+            }
+            bool removed = target.RemoveItem(item);
+            OnInventoryChanged?.Invoke();
+            return removed;
         }
     }
 }

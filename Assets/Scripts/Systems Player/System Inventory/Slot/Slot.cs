@@ -35,5 +35,18 @@ namespace System.Inventory
             stack.quantity += added;
             return amount - added;
         }
+
+        public int Remove(ItemData item, int amount)
+        {
+            if (IsEmpty) return 0;
+            if (stack.item != item) return 0;
+            int removed = Mathf.Min(amount, stack.quantity);
+            stack.quantity -= removed;
+            if (stack.quantity <= 0)
+            {
+                stack = null;
+            }
+            return removed;                   
+        }
     }
 }

@@ -21,3 +21,6 @@ MonoBehaviour:
   attack: 323
   specialAttack1: 324
   pickup: 101
+  takedamage: 116
+  consumeH: 257
+  consumeS: 258
