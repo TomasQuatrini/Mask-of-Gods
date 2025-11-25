@@ -22,7 +22,7 @@ public class PlayerContext : MonoBehaviour
         Body = GetComponent<Rigidbody>();
         Collider = GetComponent<CapsuleCollider>();                      
         Movement = GetComponentInChildren<IMovement>();
-        CollisionController = GetComponentInChildren<PlayerCollisionController>();
+        CollisionController = GetComponent<PlayerCollisionController>();
         Health = GetComponentInChildren<PlayerHealth>();
         Stamina = GetComponentInChildren<PlayerStaminaSM>();
         StatsComponent = GetComponentInChildren<PlayerStatsComponent>();

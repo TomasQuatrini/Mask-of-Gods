@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class InputPlayer : MonoBehaviour
@@ -7,6 +8,7 @@ public class InputPlayer : MonoBehaviour
 
     [Header("propiedades para networking")]
     public Vector3 CurrentMove { get; private set; }
+    public Vector2 CurrentDelta { get; private set; }
     public bool IsRunning { get; private set; }
     public bool IsJumping { get; private set; }
     public bool WantsToPickup { get; private set; }
@@ -19,6 +21,7 @@ public class InputPlayer : MonoBehaviour
     [SerializeField] private KeysMove _keys;
 
     public event Action<Vector3> OnMove;
+    public event Action<Vector2> OnDelta;
     public event Action<bool> OnRun;
     public event Action OnJump;
     public event Action OnAttack;
@@ -33,6 +36,7 @@ public class InputPlayer : MonoBehaviour
     private bool _consumePotionStaminaLatch;
     private bool _consumePotionHealthLatch;
 
+    private Vector2 _axisCamera;
     void Awake()
     {
         if (Instance == null)
@@ -95,37 +99,20 @@ public class InputPlayer : MonoBehaviour
 
     void Update()
     {
-        _moveInput = Vector3.zero;
-
-        // Movimiento
-        if (Input.GetKey(_keys.up))
-            _moveInput.z += 1;
-        if (Input.GetKey(_keys.down))
-            _moveInput.z -= 1;
-        if (Input.GetKey(_keys.left))
-            _moveInput.x -= 1;
-        if (Input.GetKey(_keys.right))
-            _moveInput.x += 1;
-
-        CurrentMove = _moveInput;
-        OnMove?.Invoke(_moveInput);
+        GetMoving();
+        GetDelta();       
         GetRunning();
         GetJumping();
         GetPickup();
         GetTakeDamaged();
         GetConsumePotiomHealth();
         GetConsumePotionStamina();
+        SetLatches();
+        GetAttacks();
+    }
 
-
-        if (Input.GetKeyDown(_keys.attack))
-        {
-            OnAttack?.Invoke();
-        }
-        if (Input.GetKeyDown(_keys.specialAttack1))
-        {
-            OnSpecial1?.Invoke();
-        }
-
+    private void SetLatches()
+    {
         if (WantsToPickup)
         {
             _wantsToPickupLatch = true;
@@ -153,13 +140,68 @@ public class InputPlayer : MonoBehaviour
         }
     }
 
+
+
+    #region GetInputs
+
+    private Vector3 GetWorldMoveFromCamera(Vector3 localMove)
+    {
+        if (CameraFollow.Instance == null || localMove == Vector3.zero)
+        {
+            return localMove;
+        }
+        var camera = CameraFollow.Instance.transform;
+        Vector3 camForward = camera.forward;
+        camForward.y = 0f;
+        camForward.Normalize();
+
+        Vector3 camRight = camera.right;
+        camRight.y = 0f;
+        camRight.Normalize();
+
+        Vector3 worldMove = camForward * localMove.z + camRight * localMove.x;
+        if (worldMove.sqrMagnitude > 1f)
+        {
+            worldMove.Normalize();
+        }
+        return worldMove;
+    }
+
+    private void GetDelta()
+    {
+        _axisCamera = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        CurrentDelta = _axisCamera;
+        OnDelta?.Invoke(CurrentDelta);
+    }
+    private void GetMoving()
+    {
+        _moveInput = Vector3.zero;
+        if (Input.GetKey(_keys.up))
+            _moveInput.z += 1;
+        if (Input.GetKey(_keys.down))
+            _moveInput.z -= 1;
+        if (Input.GetKey(_keys.left))
+            _moveInput.x -= 1;
+        if (Input.GetKey(_keys.right))
+            _moveInput.x += 1;
+
+        if (_moveInput.sqrMagnitude > 1f)
+        { 
+            _moveInput.Normalize();
+        }
+
+        Vector3 worldMove = GetWorldMoveFromCamera(_moveInput);
+
+        CurrentMove = worldMove;
+
+        OnMove?.Invoke(worldMove);
+    }
     private void GetRunning()
-    {        
+    {
         bool pressed = Input.GetKey(_keys.run);
         IsRunning = pressed;
         OnRun?.Invoke(pressed);
     }
-
     private void GetJumping()
     {
         if (Input.GetKeyDown(_keys.jump))
@@ -219,5 +261,19 @@ public class InputPlayer : MonoBehaviour
         {
             ConsumePotion_Health = false;
         }
+    }  
+
+    private void GetAttacks()
+    {
+        if (Input.GetKeyDown(_keys.attack))
+        {
+            OnAttack?.Invoke();
+        }
+        if (Input.GetKeyDown(_keys.specialAttack1))
+        {
+            OnSpecial1?.Invoke();
+        }
     }
+
+    #endregion
 }
