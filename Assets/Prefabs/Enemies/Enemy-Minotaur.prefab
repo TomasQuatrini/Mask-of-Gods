@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 2314583823033326484}
   m_Layer: 0
   m_Name: Enemy-Minotaur
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -458,7 +458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8abf63833ecab11489d5f0b277431211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
+  _target: {fileID: 4740138910566905775, guid: 8ab08cd77a13fd843a12c766fe5c0915, type: 3}
   EnemyData: {fileID: 11400000, guid: 7020691e0d205be4398b5212574eeb85, type: 2}
   _patrolPoints:
   - {fileID: 3723918393729378159}
