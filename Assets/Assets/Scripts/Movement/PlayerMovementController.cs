@@ -47,10 +47,10 @@ public class PlayerMovement : MonoBehaviour
     }
     public bool GetRunning()
     {
-        if (_hasStamina == false)        
-            return false;        
+        if (_hasStamina == false)
+            return false;
         else
-            return _isRunning;       
+            return _isRunning;
     }
 
     private void HandleMove(Vector3 dir)
@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleJump()
     {
-        if(_jumpCommand is null) { _jumpCommand = new PlayerJumpCommand(_rb, _playerCollisionController, _settings); }
+        if (_jumpCommand is null) { _jumpCommand = new PlayerJumpCommand(_rb, _playerCollisionController, _settings); }
         _jumpCommand.Execute();
     }
 
@@ -76,5 +76,5 @@ public class PlayerMovement : MonoBehaviour
         _hasStamina = has;
     }
 
+    
 }
- 
