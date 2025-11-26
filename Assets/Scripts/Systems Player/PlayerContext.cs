@@ -1,10 +1,10 @@
 using UnityEngine;
 using System.Inventory;
 
-public class PlayerContext : MonoBehaviour
+public class PlayerContext : MonoBehaviour, IContext
 {
     [Header("Root")]
-    public Rigidbody Body { get; private set; }
+    public Rigidbody Rigidbody { get; private set; }
     public CapsuleCollider Collider { get; private set; }
 
     [Header("Logic Components")]   
@@ -19,7 +19,7 @@ public class PlayerContext : MonoBehaviour
     [SerializeField] public MovementSettings MovementSettings;
     private void Awake()
     {
-        Body = GetComponent<Rigidbody>();
+        Rigidbody = GetComponent<Rigidbody>();
         Collider = GetComponent<CapsuleCollider>();                      
         Movement = GetComponentInChildren<IMovement>();
         CollisionController = GetComponent<PlayerCollisionController>();

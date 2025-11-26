@@ -22,23 +22,30 @@ public class PlayerMoveCommand : ICommand
     }
     public void Execute()
     {
-        _isRunning = _playerMovement.GetRunning();
-        Move();
+        Tick(Vector3.zero);
     }
-    private void Move()
+
+    public void Tick(Vector3 knockback)
     {
-        //var pos = MoveAction.ReadValue<Vector2>();
+        _isRunning = _playerMovement.GetRunning();
+        Move(knockback);
+    }
+    private void Move(Vector3 knockback)
+    {        
         _movement = _playerMovement.GetDirection();
         _movement.Normalize();
-        if(_movement != Vector3.zero)
-        {
-            Vector3 desiredForward = Vector3.RotateTowards(_rb.transform.forward, _movement, _settings.turnSpeed * Time.deltaTime, 0f);
-            _rotation = Quaternion.LookRotation(desiredForward);
 
+        Vector3 inputVelocity = Vector3.zero;
+        if (_movement != Vector3.zero )
+        {
+            inputVelocity = _movement * CurrentSpeed();
+            Vector3 desiredForward = Vector3.RotateTowards(_rb.transform.forward, _movement, _settings.turnSpeed * Time.fixedDeltaTime, 0f);
+            _rotation = Quaternion.LookRotation(desiredForward);
             _rb.MoveRotation(_rotation);
-            _rb.MovePosition(_rb.position + CurrentSpeed() * Time.deltaTime * _movement );
         }
-        
+        Vector3 totalVelocity = inputVelocity + knockback;
+        if (totalVelocity == Vector3.zero) return;
+        _rb.MovePosition(_rb.position + totalVelocity * Time.fixedDeltaTime);
     }
     private float CurrentSpeed()
     {

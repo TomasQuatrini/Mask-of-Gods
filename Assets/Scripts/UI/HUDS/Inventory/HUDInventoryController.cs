@@ -56,13 +56,13 @@ namespace System.Inventory
                 var view = _slotViews[i];
                 if (source != null && i < source.slots.Count && !source.slots[i].IsEmpty)
                 {
-                    Debug.Log($"[HUDInventoryController] Showing slot {i} with stack {source.slots[i].stack}");
+                    //Debug.Log($"[HUDInventoryController] Showing slot {i} with stack {source.slots[i].stack}");
                     var slot = source.slots[i];
                     view.Show(slot.stack);
                 }
                 else
                 {
-                    Debug.Log($"[HUDInventoryController] Showing empty slot {i}");
+                    //Debug.Log($"[HUDInventoryController] Showing empty slot {i}");
                     view.ShowEmpty();
                 }
             }

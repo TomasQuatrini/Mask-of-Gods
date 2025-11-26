@@ -28,10 +28,7 @@ public class PlayerStaminaSM : MonoBehaviour
     private void Awake()
     {        
         _ctx = GetComponentInParent<PlayerContext>();
-        _input = InputPlayer.Instance;
-        if (_input == null)
-            Debug.LogError(" No se encontr? InputPlayer en la escena.");
-
+        _input = InputPlayer.Instance;   
         var core = _ctx.StatsComponent;
         Stats = core.Stats;        
         StaminaStat = Stats.Get(StatType.Stamina);
@@ -43,7 +40,7 @@ public class PlayerStaminaSM : MonoBehaviour
         _exhausted = new StaminaExhaustedState(this);
 
         ChangeState(_idle);
-        Debug.Log($"[{name}] Stats es {Stats}, hash {Stats.GetHashCode()}", this);
+        //Debug.Log($"[{name}] Stats es {Stats}, hash {Stats.GetHashCode()}", this);
     }
     private void Update()
     {

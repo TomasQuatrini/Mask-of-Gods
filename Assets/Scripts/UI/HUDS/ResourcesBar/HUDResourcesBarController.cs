@@ -24,7 +24,7 @@ public class HUDResourcesBarController : MonoBehaviour
 
     public void BindPlayer(PlayerHealth playerHealth, PlayerStaminaSM playerStaminaSM)
     {
-        Debug.Log($"[HUDController] Binding player UI with Health: {playerHealth}, Stamina: {playerStaminaSM}");
+        //Debug.Log($"[HUDController] Binding player UI with Health: {playerHealth}, Stamina: {playerStaminaSM}");
         if (playerHealth == null && playerStaminaSM == null)
         {
             Debug.LogError("[HUD] BindPlayer; Health o StaminaSM son null"); 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour, IMovement
+public class PlayerMovement : MonoBehaviour, IMovement, IKnockbackeable
 {
     private Rigidbody _rb;
     private PlayerContext _ctx;
@@ -17,10 +17,14 @@ public class PlayerMovement : MonoBehaviour, IMovement
     private bool _isRunning = false;
     private bool _hasStamina;
 
+    [SerializeField] private float _knockbackDamping = 10f;
+    private Vector3 _knockbackVelocity = Vector3.zero;
+    private float _knockbackTime = 0f;
+
     private void Awake()
     {
         _ctx = GetComponentInParent<PlayerContext>();
-        _rb = _ctx.Body;
+        _rb = _ctx.Rigidbody;
         _inputPlayer = InputPlayer.Instance;
         if ( _inputPlayer == null ) Debug.LogWarning("InputPlayer instance not found in PlayerMovement");
         _playerCollisionController = _ctx.CollisionController;
@@ -35,6 +39,8 @@ public class PlayerMovement : MonoBehaviour, IMovement
         {
             _stamina.HasStamina += HasStamina;
         }
+
+        _moveCommand = new PlayerMoveCommand(_rb, _playerCollisionController, _settings, this);
     }
 
     private void OnDestroy()
@@ -49,8 +55,23 @@ public class PlayerMovement : MonoBehaviour, IMovement
         {
             _stamina.HasStamina -= HasStamina;
         }
-    }  
-    
+    }
+
+    private void FixedUpdate()
+    {
+        if (_moveCommand == null) return;
+        _moveCommand.Tick(_knockbackVelocity);
+        if (_knockbackTime > 0)
+        {
+            _knockbackTime -= Time.deltaTime;
+            _knockbackVelocity = Vector3.Lerp(_knockbackVelocity, Vector3.zero, _knockbackDamping * Time.fixedDeltaTime);
+        }
+        else
+        {
+            _knockbackVelocity = Vector3.zero;
+        }
+    }
+
     public Vector3 GetDirection()
     {
         return _currentDirection;
@@ -65,12 +86,7 @@ public class PlayerMovement : MonoBehaviour, IMovement
 
     private void HandleMove(Vector3 dir)
     {
-        _currentDirection = dir;
-        if (_moveCommand is null) 
-        { 
-            _moveCommand = new PlayerMoveCommand(_rb, _playerCollisionController, _settings, this);
-        }
-        _moveCommand.Execute();
+        _currentDirection = dir;        
     }
 
     private void HandleRun(bool running)
@@ -90,5 +106,11 @@ public class PlayerMovement : MonoBehaviour, IMovement
     private void HasStamina(bool has)
     {
         _hasStamina = has;
+    }
+
+    public void ApplyKnockback(Vector3 force, float duration)
+    {
+        _knockbackVelocity += force;
+        _knockbackTime = Mathf.Max(_knockbackTime, duration);
     }
 }

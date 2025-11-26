@@ -27,7 +27,7 @@ public class PlayerJumpCommand : ICommand
 
         _jumpCount--;
         _rb.AddForce(Vector3.up * _settings.jumpForce, ForceMode.Impulse);
-        Debug.Log($"Jump");
+        //Debug.Log($"Jump");
     }
 
     private void CountJumpsReset()
