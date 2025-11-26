@@ -150,5 +150,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc039bebaac7d284eb3235308e178cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
-  _smoothSpeed: 5
+  _target: {fileID: 4740138910566905775, guid: 8ab08cd77a13fd843a12c766fe5c0915, type: 3}
+  _offset: {x: 0, y: 3, z: -6}
+  _smoothTime: 0.15
+  _maxSnapDistance: 20
+  _sensX: 2
+  _sensY: 2
+  _minPitch: -30
+  _maxPitch: 60

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7918490503702821084}
   - component: {fileID: 8551178585728393307}
+  - component: {fileID: 7456249693264134518}
   m_Layer: 0
   m_Name: Logic
   m_TagString: Untagged
@@ -45,6 +46,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 035fa527d1518564eb5bd27268cc21f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7456249693264134518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740935868772647385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cc69a4bbce33bd4ba534249113107a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shootOrigin: {fileID: 3442615570280960662}
+  _projectilePrefab: {fileID: 2013794555535228323, guid: af651395c4ca2b64fb7b1a295ab2d1cc, type: 3}
+  _attackCooldown: 1.5
 --- !u!1 &886838024718453658
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,7 +336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8abf63833ecab11489d5f0b277431211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
+  _target: {fileID: 4740138910566905775, guid: 8ab08cd77a13fd843a12c766fe5c0915, type: 3}
   EnemyData: {fileID: 11400000, guid: b8799d4fcab6a3f4fa8c67ac6c21989e, type: 2}
   _patrolPoints:
   - {fileID: 5734862288703642606}
