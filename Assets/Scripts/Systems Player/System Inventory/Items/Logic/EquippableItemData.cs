@@ -10,7 +10,7 @@ namespace System.Inventory
         new bool stackable = false;
         public bool Stackable { get => stackable; set => stackable = value; }
 
-        public override void Use() //inventory owner in parentesis
+        public override void Use(Inventory owner) //inventory owner in parentesis
         {
             // owner.EquipItem(this);
         }

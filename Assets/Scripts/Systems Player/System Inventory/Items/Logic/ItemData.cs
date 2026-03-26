@@ -14,6 +14,6 @@ namespace System.Inventory
         [Header("UI")]
         public Sprite Icon;
 
-        public abstract void Use(); //inventory owner in parentesis
+        public abstract void Use(Inventory owner); //inventory owner in parentesis
     }
 }
