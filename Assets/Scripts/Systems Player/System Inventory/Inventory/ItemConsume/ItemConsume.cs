@@ -37,7 +37,7 @@ public class ItemConsume : MonoBehaviour
     {
         if (_inventory.Consumable == null) return;
         Debug.Log("buscando slot consumible");
-        if (_inventory.Consumable.slots.Count == 0) return;
+        if (_inventory.Consumable.slots.Count < 1) return;
         Debug.Log("corroborando que haya aunque sea 1");
         foreach (var slot in _inventory.Consumable.slots)
         {
@@ -51,7 +51,7 @@ public class ItemConsume : MonoBehaviour
             Debug.Log("com 4");
             _health.Heal(slot.stack.item.EffectAmount);
             Debug.Log("curando");
-            _inventory.Consumable.RemoveItem(slot.stack.item);
+            _inventory.Consumable.ConsumeItem(slot.stack.item);
             Debug.Log("gastando");
             break;
         }
