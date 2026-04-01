@@ -26,8 +26,8 @@ public class InputPlayer : MonoBehaviour
     public event Action OnJump;
     public event Action OnAttack;
     public event Action OnSpecial1;
-    public event Action UseHealthPotion;
-    public event Action UseStaminaPotion;
+    public event Action ConsumeHealthPotion;
+    public event Action ConsumeStaminaPotion;
 
     private Vector3 _moveInput;
 
@@ -107,7 +107,7 @@ public class InputPlayer : MonoBehaviour
         GetJumping();
         GetPickup();
         GetTakeDamaged();
-        GetConsumePotiomHealth();
+        GetConsumePotionHealth();
         GetConsumePotionStamina();
         SetLatches();
         GetAttacks();
@@ -246,7 +246,7 @@ public class InputPlayer : MonoBehaviour
         if (Input.GetKeyDown(_keys.consumeS))
         {
             ConsumePotion_Stamina = true;
-            UseStaminaPotion?.Invoke();
+            ConsumeStaminaPotion?.Invoke();
         }
         else
         {
@@ -254,12 +254,12 @@ public class InputPlayer : MonoBehaviour
         }
     }
 
-    private void GetConsumePotiomHealth()
+    private void GetConsumePotionHealth()
     {
         if (Input.GetKeyDown(_keys.consumeH))
         {
             ConsumePotion_Health = true;
-            UseHealthPotion?.Invoke();
+            ConsumeHealthPotion?.Invoke();
         }
         else
         {

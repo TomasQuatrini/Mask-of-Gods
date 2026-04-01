@@ -5,6 +5,8 @@ namespace System.Inventory
     {
         public ItemData item;
         public int quantity;
+        public bool isEmpty => item == null || quantity <= 0;
+
 
         public ItemStack(ItemData item, int quantity)
         {
