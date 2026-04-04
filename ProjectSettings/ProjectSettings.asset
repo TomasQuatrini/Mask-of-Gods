@@ -922,11 +922,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 931e1489-9855-4380-a1ed-2365fe752839
+  cloudProjectId: 73c14d77-7b99-4da2-8336-4488319d8dbb
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Mask of the Gods 2025-09-11_19-16-20
-  organizationId: gingergamboa
+  projectName: Mask of the Gods
+  organizationId: upc_nps
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
