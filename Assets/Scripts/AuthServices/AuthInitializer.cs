@@ -1,20 +1,37 @@
+using System;
 using Unity.Services.Core;
 using Unity.Services.Authentication;
 using UnityEngine;
+using UnityEngine.UI;
+using System.Threading.Tasks;
 public class AuthInitializer : MonoBehaviour
 {
+
+    [SerializeField] private Button signInAnonymousButton;
     async void Start()
     {
+        signInAnonymousButton.interactable = false;
         await UnityServices.InitializeAsync();
-        await SignIn();
+        signInAnonymousButton.interactable = true;
+        signInAnonymousButton.onClick.AddListener(SignIn);
     }
-    async System.Threading.Tasks.Task SignIn()
+    private async void SignIn()
     {
-        await AuthenticationService.Instance.SignInAnonymouslyAsync();
-        Debug.Log("Player ID: " +
-        AuthenticationService.Instance.PlayerId);
+        signInAnonymousButton.gameObject.SetActive(false);
+        try
+        {
+            await AuthenticationService.Instance.SignInAnonymouslyAsync();
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e);
+            throw;
+        }
+
+        Debug.Log("Player ID: " + AuthenticationService.Instance.PlayerId);
+        await Task.Delay(4000);
+        Debug.Log("Sign in successful");
     }
+
+
 }
-// Inicializa Unity Game Services
-// Inicia sesión anónima del jugador
-// Imprime el Player ID en consola
