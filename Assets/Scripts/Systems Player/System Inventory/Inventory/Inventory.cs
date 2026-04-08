@@ -58,5 +58,13 @@ namespace System.Inventory
             }
             return false;
         }
+
+        public bool ConsumeItem(ItemData item)
+        {
+            if (item == null) return false;
+            if (item.Type != ItemType.Consumable) return false;
+            RemoveItem(item); 
+            return true;
+        }
     }
 }

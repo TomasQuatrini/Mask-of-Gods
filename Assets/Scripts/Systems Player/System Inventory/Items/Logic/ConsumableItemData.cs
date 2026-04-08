@@ -11,13 +11,11 @@ namespace System.Inventory
         public ConsumableType Type_Consumable;
         new bool stackable = true;
 
-        public bool Stackable { get => stackable; set => stackable = value; }
+        public bool Stackable { get => stackable; set => stackable = value; }        
 
-        
-
-        public override void Use() //inventory owner in parentesis
+        public override void Use(Inventory owner) //inventory owner in parentesis
         {
-            // owner.ConsumeItem(this);
+            owner.ConsumeItem(this);
         }
     }
 }

@@ -80,7 +80,7 @@ namespace System.Inventory
             { 
                 return false;
             }
-            bool removed = target.RemoveItem(item);
+            bool removed = target.ConsumeItem(item);
             OnInventoryChanged?.Invoke();
             return removed;
         }

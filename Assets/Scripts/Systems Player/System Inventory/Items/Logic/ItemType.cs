@@ -9,4 +9,9 @@ namespace System.Inventory
     {
         Health, Stamina
     }
+
+    public enum EffectType
+    {
+        Heal, StaminaRestore
+    }
 }
