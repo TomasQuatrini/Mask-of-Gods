@@ -36,23 +36,15 @@ public class ItemConsume : MonoBehaviour
     private void ConsumeHealthPotion()
     {
         if (_inventory.Consumable == null) return;
-        Debug.Log("buscando slot consumible");
         if (_inventory.Consumable.slots.Count < 1) return;
-        Debug.Log("corroborando que haya aunque sea 1");
         foreach (var slot in _inventory.Consumable.slots)
         {
             if (slot.IsEmpty) continue;
-            Debug.Log("com 1");
             if (slot.stack.item == null) continue;
-            Debug.Log("com 2");
             if (slot.stack.item.Type != ItemType.Consumable) continue;
-            Debug.Log("com 3");
             if (slot.stack.item.EffectType != EffectType.Heal) continue;
-            Debug.Log("com 4");
             _health.Heal(slot.stack.item.EffectAmount);
-            Debug.Log("curando");
-            _inventory.Consumable.ConsumeItem(slot.stack.item);
-            Debug.Log("gastando");
+            _inventory.ConsumeItem(slot.stack.item);
             break;
         }
     }
