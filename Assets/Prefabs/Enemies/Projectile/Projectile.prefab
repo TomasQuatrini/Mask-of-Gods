@@ -152,3 +152,5 @@ MonoBehaviour:
   _speed: 10
   _lifeTime: 10
   _damage: 10
+  _knockbackForce: 25
+  _knockbackDuration: 0.5

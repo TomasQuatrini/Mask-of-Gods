@@ -108,9 +108,9 @@ public class PlayerMovement : MonoBehaviour, IMovement, IKnockbackeable
         _hasStamina = has;
     }
 
-    public void ApplyKnockback(Vector3 force, float duration)
+    public void ApplyKnockback(Vector3 direction, float duration)
     {
-        _knockbackVelocity += force;
+        _knockbackVelocity += direction;
         _knockbackTime = Mathf.Max(_knockbackTime, duration);
     }
 }

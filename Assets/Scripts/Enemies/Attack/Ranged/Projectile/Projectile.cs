@@ -5,6 +5,8 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float _speed = 10f;
     [SerializeField] private float _lifeTime = 5f;
     [SerializeField] private float _damage = 10f;
+    [SerializeField] private float _knockbackForce = 5f;
+    [SerializeField] private float _knockbackDuration = 0.5f;
 
     private float _timer;
 
@@ -28,6 +30,11 @@ public class Projectile : MonoBehaviour
         if (health != null)
         {
             health.TakeDamage(_damage);
+        }
+        var knockback = other.GetComponentInParent<IKnockbackeable>();
+        {
+            var dir = (other.transform.position - transform.position).normalized;
+            knockback?.ApplyKnockback(dir * _knockbackForce, _knockbackDuration);
         }
 
         Destroy(gameObject);
