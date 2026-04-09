@@ -38,10 +38,11 @@ public class PlayerHealth : MonoBehaviour, IHealth
     {
         HealthStat.OnValueChanged -= OnHealthStatChanged;        
     }
-    public void Heal(float amount)
+    public bool Heal(float amount)
     {
-        if (_healthResource == null || amount <= 0 ) return;
+        if (_healthResource == null || amount <= 0 || _healthResource.Current == MaxHealth ) return false;
         _healthResource.Increase(amount);
+        return true;
     }
 
     public void TakeDamage(float damage)

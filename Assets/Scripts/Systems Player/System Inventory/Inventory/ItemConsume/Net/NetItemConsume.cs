@@ -136,16 +136,16 @@ public class NetItemConsume : NetworkBehaviour
             return;
         }
 
-        switch (consumable.Type_Consumable)
+        switch (consumable.EffectType)
         {
-            case ConsumableType.Health:
+            case EffectType.Heal:
                 if (_health != null)
-                    _health.Heal(consumable.Amount);
+                    _health.Heal(consumable.EffectAmount);
                 break;
 
-            case ConsumableType.Stamina:
+            case EffectType.StaminaRestore:
                 if (_stamina != null)
-                    _stamina.StaminaResource.Increase(consumable.Amount);
+                    _stamina.StaminaResource.Increase(consumable.EffectAmount);
                 break;
         }
     }

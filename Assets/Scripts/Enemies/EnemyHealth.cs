@@ -4,49 +4,44 @@ using UnityEngine.Events;
 public class EnemyHealth : MonoBehaviour, IHealth
 {
     [Header("Configuración de Vida")]
-    [SerializeField] private float maxHealth = 100f;
-    private float currentHealth;
+    [SerializeField] private float _maxHealth = 100f;
+    private float _currentHealth;
 
     [Header("Eventos")]
     public UnityEvent onDeath;
-    public UnityEvent<float> onHealthChanged; // Pasa el valor actual de vida
-
+    public UnityEvent<float> onHealthChanged; 
     private bool _isDead = false;
     private void Awake()
     {
-        currentHealth = maxHealth;
+        _currentHealth = _maxHealth;
     }
-
-    /// <summary>
-    /// Aplica daño al objeto.
-    /// </summary>
+    
     public void TakeDamage(float amount)
     {
         if (_isDead) return;
 
-        currentHealth -= amount;
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        _currentHealth -= amount;
+        _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
 
-        Debug.Log($"{name} recibió {amount} de daño. Vida restante: {currentHealth}");
+        Debug.Log($"{name} recibió {amount} de daño. Vida restante: {_currentHealth}");
 
-        onHealthChanged?.Invoke(currentHealth);
+        onHealthChanged?.Invoke(_currentHealth);
 
-        if (currentHealth <= 0)
+        if (_currentHealth <= 0)
             Die();
     }
 
     /// <summary>
     /// Restaura una cantidad de vida.
     /// </summary>
-    public void Heal(float amount)
+    public bool Heal(float amount)
     {
-        if (_isDead) return;
+        if (_isDead || _currentHealth == _maxHealth) return false;
 
-        currentHealth += amount;
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-
-        Debug.Log($"{name} se curó {amount}. Vida actual: {currentHealth}");
-        onHealthChanged?.Invoke(currentHealth);
+        _currentHealth += amount;
+        _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);       
+        onHealthChanged?.Invoke(_currentHealth);
+        return true;
     }
 
     /// <summary>
@@ -70,12 +65,12 @@ public class EnemyHealth : MonoBehaviour, IHealth
     public void ResetHealth()
     {
         _isDead = false;
-        currentHealth = maxHealth;
-        onHealthChanged?.Invoke(currentHealth);
+        _currentHealth = _maxHealth;
+        onHealthChanged?.Invoke(_currentHealth);
     }
 
-    public float CurrentHealth => currentHealth;
-    public float MaxHealth => maxHealth;
+    public float CurrentHealth => _currentHealth;
+    public float MaxHealth => _maxHealth;
     public bool IsDead => _isDead;
 
     void IHealth.Die()

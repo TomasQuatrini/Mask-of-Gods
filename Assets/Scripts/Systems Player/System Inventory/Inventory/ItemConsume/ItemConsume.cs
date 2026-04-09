@@ -26,11 +26,13 @@ public class ItemConsume : MonoBehaviour
     private void Start()
     {
         _input.ConsumeHealthPotion += ConsumeHealthPotion;
+        _input.ConsumeStaminaPotion += ConsumeStaminaPotion;
     }
 
     private void OnDisable()
     {
         _input.ConsumeHealthPotion -= ConsumeHealthPotion;
+        _input.ConsumeStaminaPotion -= ConsumeStaminaPotion;
     }
 
     private void ConsumeHealthPotion()
@@ -43,9 +45,33 @@ public class ItemConsume : MonoBehaviour
             if (slot.stack.item == null) continue;
             if (slot.stack.item.Type != ItemType.Consumable) continue;
             if (slot.stack.item.EffectType != EffectType.Heal) continue;
-            _health.Heal(slot.stack.item.EffectAmount);
-            _inventory.ConsumeItem(slot.stack.item);
+
+            var TryConsume = _health.Heal(slot.stack.item.EffectAmount);
+            if (TryConsume is true)
+            {
+                _inventory.ConsumeItem(slot.stack.item);
+            }
             break;
         }
     }
+
+    private void ConsumeStaminaPotion()
+    {
+        if (_inventory.Consumable == null) { return; }
+        if (_inventory.Consumable.slots.Count < 1) return;
+        foreach (var slot in _inventory.Consumable.slots)
+        {
+            if (slot.IsEmpty) continue;
+            if (slot.stack.item == null) continue;
+            if (slot.stack.item.Type != ItemType.Consumable) continue;
+            if (slot.stack.item.EffectType != EffectType.StaminaRestore) continue;
+            var TryConsume = _stamina.TryRestore(slot.stack.item.EffectAmount); 
+            if (TryConsume is true)
+            {
+                _inventory.ConsumeItem(slot.stack.item);
+            }
+            break;
+        }
+    }
+
 }

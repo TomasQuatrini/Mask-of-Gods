@@ -6,13 +6,9 @@ namespace System.Inventory
     [System.Serializable]
     public class ConsumableItemData : ItemData
     {
-        [Header("Consumable Item Data")]
-        public int Amount;
-        public ConsumableType Type_Consumable;
+        [Header("Consumable Item Data")]       
         new bool stackable = true;
-
-        public bool Stackable { get => stackable; set => stackable = value; }        
-
+        public bool Stackable { get => stackable; set => stackable = value; }            
         public override void Use(Inventory owner) //inventory owner in parentesis
         {
             owner.ConsumeItem(this);

@@ -96,6 +96,18 @@ public class PlayerStaminaSM : MonoBehaviour
         return percent >= _settings.exhaustedRecoverPercent;
     }
 
+    public bool TryRestore(float count)
+    {
+        if (StaminaResource == null || StaminaResource.Current == StaminaResource.Max || count == 0) return false;
+        StaminaResource.Increase(count);
+        CheckStamina();
+        if (_state == _exhausted && RecoveredFromExhausted())
+        {
+            ChangeState(_idle);
+        }
+        return true;
+    }
+
     public IStaminaState IdleState => _idle;
     public IStaminaState RunningState => _running;
     public IStaminaState ExhaustedState => _exhausted;    
