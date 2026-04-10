@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Threading.Tasks;
 using TMPro;
+using UnityEngine.SceneManagement;
+
 public class AuthInitializer : MonoBehaviour
 {
     [Header("Buttons")]
@@ -54,6 +56,7 @@ public class AuthInitializer : MonoBehaviour
         await Task.Delay(4000);
         uiMessage.ShowMessage("SignIn Anonymous is successful");
         Debug.Log("Sign in successful");
+        SceneManager.LoadScene("SaveScene");
     }
 
     async Task SignUpWithUsernamePasswordAsync(string username, string password)
