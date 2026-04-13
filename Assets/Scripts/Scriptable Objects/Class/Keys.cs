@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "KeysMove", menuName = "ScriptableObjects/Keys/KeysMove", order = 1)]
-public class KeysMove : ScriptableObject
+public class Keys : ScriptableObject
 {
     public KeyCode up;
     public KeyCode down;
@@ -10,7 +10,7 @@ public class KeysMove : ScriptableObject
     public KeyCode run;    
     public KeyCode jump;
     public KeyCode attack;
-    public KeyCode specialAttack1;
+    public KeyCode defense;
     public KeyCode pickup;
     public KeyCode takedamage;
     public KeyCode consumeH;

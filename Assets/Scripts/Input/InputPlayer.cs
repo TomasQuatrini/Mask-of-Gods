@@ -1,5 +1,4 @@
 using System;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class InputPlayer : MonoBehaviour
@@ -12,20 +11,20 @@ public class InputPlayer : MonoBehaviour
     public bool IsRunning { get; private set; }
     public bool IsJumping { get; private set; }
     public bool WantsToPickup { get; private set; }
-
+    public bool IsDefending { get; private set; }
     public bool TakeDamaged { get; private set; } //provisorio
     public bool ConsumePotion_Stamina { get; private set; }
     public bool ConsumePotion_Health { get; private set; }
 
 
-    [SerializeField] private KeysMove _keys;
+    [SerializeField] private Keys _keys;
 
     public event Action<Vector3> OnMove;
     public event Action<Vector2> OnDelta;
     public event Action<bool> OnRun;
     public event Action OnJump;
     public event Action OnAttack;
-    public event Action OnSpecial1;
+    public event Action<bool> OnDefense;
     public event Action ConsumeHealthPotion;
     public event Action ConsumeStaminaPotion;
 
@@ -111,6 +110,7 @@ public class InputPlayer : MonoBehaviour
         GetConsumePotionStamina();
         SetLatches();
         GetAttacks();
+        GetDefense();
     }
 
     private void SetLatches()
@@ -273,10 +273,13 @@ public class InputPlayer : MonoBehaviour
         {
             OnAttack?.Invoke();
         }
-        if (Input.GetKeyDown(_keys.specialAttack1))
-        {
-            OnSpecial1?.Invoke();
-        }
+    }
+
+    private void GetDefense()
+    {
+        bool running = Input.GetKey(_keys.defense);
+        IsDefending = running;
+        OnDefense?.Invoke(running);
     }
 
     #endregion

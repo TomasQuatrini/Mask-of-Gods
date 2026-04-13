@@ -6,60 +6,67 @@ using UnityEngine.UI;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class AuthInitializer : MonoBehaviour
 {
     [Header("Buttons")]
-    [SerializeField] private Button signInAnonymousButton;
-    [SerializeField] private Button signUpAccountButton;
-    [SerializeField] private Button signInWithUsernameAndPasswordButton;
+    [SerializeField] private Button _signInAnonymousButton;
+    [SerializeField] private Button _signUpAccountButton;
+    [SerializeField] private Button _signInWithUsernameAndPasswordButton;
+    [SerializeField] private Button _playGameButton;
 
     [Header("Input Fields")]
-    [SerializeField] private TMP_InputField usernameInputField;
-    [SerializeField] private TMP_InputField passwordInputField;
+    [SerializeField] private TMP_InputField _usernameInputField;
+    [SerializeField] private TMP_InputField _passwordInputField;
 
     [Header("Message Popup")]
-    [SerializeField] private UI_Message uiMessage;
+    [SerializeField] private UI_Message _uiMessage;
 
     async void Start()
     {
-        signInAnonymousButton.interactable = false;
+        _signInAnonymousButton.interactable = false;
         await UnityServices.InitializeAsync();
-        signInAnonymousButton.interactable = true;
-        signInAnonymousButton.onClick.AddListener(SignIn);
+        _signInAnonymousButton.interactable = true;
+        _signInAnonymousButton.onClick.AddListener(SignIn);
+        _playGameButton.interactable = false;
 
-        signUpAccountButton.onClick.AddListener(() =>
+        _signUpAccountButton.onClick.AddListener(() =>
         {
-            SignUpWithUsernamePasswordAsync(usernameInputField.text, passwordInputField.text);
+            SignUpWithUsernamePasswordAsync(_usernameInputField.text, _passwordInputField.text);
         });
 
-        signInWithUsernameAndPasswordButton.onClick.AddListener(() =>
+        _signInWithUsernameAndPasswordButton.onClick.AddListener(() =>
         {
-            SignInWithUsernamePasswordAsync(usernameInputField.text, passwordInputField.text);
+            SignInWithUsernamePasswordAsync(_usernameInputField.text, _passwordInputField.text);
+        });
+        _playGameButton.onClick.AddListener(() =>
+        {
+            SceneManager.LoadScene("PlayerTestScene");
         });
     }
     private async void SignIn()
     {
-        signInAnonymousButton.gameObject.SetActive(false);
+        _signInAnonymousButton.gameObject.SetActive(false);
         try
         {
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
         }
         catch (Exception e)
         {
-            uiMessage.ShowErrorMessage(e.Message);
+            _uiMessage.ShowErrorMessage(e.Message);
             Debug.LogError(e);
             return;
         }
 
         Debug.Log("Player ID: " + AuthenticationService.Instance.PlayerId);
         await Task.Delay(4000);
-        uiMessage.ShowMessage("SignIn Anonymous is successful");
+        _uiMessage.ShowMessage("SignIn Anonymous is successful");
         Debug.Log("Sign in successful");
-        SceneManager.LoadScene("SaveScene");
+        _playGameButton.interactable = true;
     }
 
-    async Task SignUpWithUsernamePasswordAsync(string username, string password)
+    private async Task SignUpWithUsernamePasswordAsync(string username, string password)
     {
         try
         {
@@ -69,7 +76,7 @@ public class AuthInitializer : MonoBehaviour
         {
             // Compare error code to AuthenticationErrorCodes
             // Notify the player with the proper error message            
-            uiMessage.ShowErrorMessage(ex.Message);
+            _uiMessage.ShowErrorMessage(ex.Message);
             Debug.LogException(ex);
             throw;
         }
@@ -77,14 +84,15 @@ public class AuthInitializer : MonoBehaviour
         {
             // Compare error code to CommonErrorCodes
             // Notify the player with the proper error message
-            uiMessage.ShowErrorMessage(ex.Message);
+            _uiMessage.ShowErrorMessage(ex.Message);
             Debug.LogException(ex);
             throw;
         }
-        uiMessage.ShowMessage("SignUp is successful.");
+        _uiMessage.ShowMessage("SignUp is successful.");
+        _playGameButton.interactable = true;
     }
 
-    async Task SignInWithUsernamePasswordAsync(string username, string password)
+    private async Task SignInWithUsernamePasswordAsync(string username, string password)
     {
         try
         {
@@ -95,7 +103,7 @@ public class AuthInitializer : MonoBehaviour
         {
             // Compare error code to AuthenticationErrorCodes
             // Notify the player with the proper error message
-            uiMessage.ShowErrorMessage(ex.Message);
+            _uiMessage.ShowErrorMessage(ex.Message);
             Debug.LogException(ex);
             throw;
         }
@@ -103,10 +111,28 @@ public class AuthInitializer : MonoBehaviour
         {
             // Compare error code to CommonErrorCodes
             // Notify the player with the proper error message
-            uiMessage.ShowErrorMessage(ex.Message);
+            _uiMessage.ShowErrorMessage(ex.Message);
             Debug.LogException(ex);
             throw;
         }
-        uiMessage.ShowMessage("SignIn is successful.");
+        _uiMessage.ShowMessage("SignIn is successful.");
+        _playGameButton.interactable = true;
+    }
+
+    private void Update()
+    {
+        PlayButtonColor();
+    }
+
+    private void PlayButtonColor()
+    {
+        if (_playGameButton.interactable)
+        {
+            _playGameButton.GetComponent<Image>().color = Color.green;
+        }
+        else
+        {
+            _playGameButton.GetComponent<Image>().color = Color.gray;
+        }
     }
 }

@@ -6,14 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Inventory-TestScene.unity
-    guid: 4faf45df3fa4b7442a29aaf3d24bc71c
-  - enabled: 1
     path: Assets/Scenes/AuthenticationService.unity
     guid: 1e9db32fa330b5a4981e8f8217f6d0d9
   - enabled: 1
     path: Assets/Scenes/SaveScene.unity
     guid: eecafdf31d34f17478d133aae326734a
+  - enabled: 1
+    path: Assets/Scenes/PlayerTestScene.unity
+    guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

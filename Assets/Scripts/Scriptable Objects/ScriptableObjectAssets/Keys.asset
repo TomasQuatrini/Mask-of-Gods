@@ -19,8 +19,8 @@ MonoBehaviour:
   run: 304
   jump: 32
   attack: 323
-  specialAttack1: 324
+  defense: 324
   pickup: 101
-  takedamage: 116
+  takedamage: 102
   consumeH: 111
   consumeS: 112
