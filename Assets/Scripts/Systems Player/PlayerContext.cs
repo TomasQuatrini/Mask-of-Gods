@@ -28,4 +28,18 @@ public class PlayerContext : MonoBehaviour, IContext
         StatsComponent = GetComponentInChildren<PlayerStatsComponent>();
         Inventory = GetComponentInChildren<PlayerInventoryComponent>();
     }
+
+    public void SetPlayerDataForLoad(SaveDataPlayer data)
+    {
+        transform.position = data.PlayerPosition.Vector3;
+        if (data == null) return;
+        if (Health != null)
+        {
+            Health.HealthResource.SetCurrent(data.CurrentPlayerHealth);
+        }
+        if (Stamina != null)
+        {
+            Stamina.StaminaResource.SetCurrent(data.CurrentPlayerStamina);
+        }
+    }
 }

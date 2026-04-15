@@ -73,5 +73,12 @@ public class Resource
         OnCurrentChanged?.Invoke(Current);
     }
 
+    public void SetCurrent(float value)
+    {
+        float old = Current;
+        Current = Clamp(value, 0f, Max);
+        if (!Mathf.Approximately(Current, old))
+            OnCurrentChanged?.Invoke(Current);
+    }
     private static float Clamp(float v, float min, float max) => v < min ? min : (v > max ? max : v);
 }

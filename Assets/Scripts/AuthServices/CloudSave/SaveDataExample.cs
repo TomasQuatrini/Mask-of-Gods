@@ -1,12 +1,11 @@
 using UnityEngine;
 using TMPro;
-using Unity.Services;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using Unity.Services.CloudSave;
 
 
-public class SaveDataPlayer : MonoBehaviour
+public class SaveDataPlayerExample : MonoBehaviour
 {
     [Header("Input Fields")]
     [SerializeField] private TMP_InputField _name;
