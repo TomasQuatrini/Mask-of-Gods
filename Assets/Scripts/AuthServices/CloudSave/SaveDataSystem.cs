@@ -1,19 +1,52 @@
 using UnityEngine;
-using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using Unity.Services.CloudSave;
 
 
-public class SaveDataPlayGame : MonoBehaviour
+public class SaveDataSystem : MonoBehaviour
 {
     [SerializeField] private PlayerContext _playerContext;
-    public void SavePlayerData()
+    [SerializeField] private UI_Message _uiMessage;
+
+    [Header("Buttons")]
+    [SerializeField] private Button _saveButton;
+    [SerializeField] private Button _loadButton;
+
+    private void Start()
+    {
+        _saveButton.onClick.AddListener(SavePlayerData);
+        _loadButton.onClick.AddListener(LoadPlayerData);
+
+    }
+    private async void SavePlayerData()
     {
         var playerPosition = new PlayerPosition(_playerContext.transform.position);
         var currentPlayerHealth = _playerContext.Health.HealthResource.Current;
         var currentPlayerStamina = _playerContext.Stamina.StaminaResource.Current;
-        var saveData = new SaveDataPlayer(playerPosition, currentPlayerHealth, currentPlayerStamina);
+        var saveData = new SaveDataPlayer(playerPosition, currentPlayerHealth, currentPlayerStamina);        
+
+        await CloudSaveService.Instance.Data.Player.SaveAsync(new Dictionary<string, object>
+        {
+            { "playerData", saveData }
+        });
+        _uiMessage.ShowMessage("Player data saved successfully.");
+    }
+
+    private async void DeletePlayerData()
+    {
+        // a completar
+    }
+
+    private async void LoadPlayerData()
+    {
+        var playerData = await CloudSaveService.Instance.Data.Player.LoadAsync( new HashSet<string> { "playerData" });
+        if (playerData.TryGetValue("playerData", out var data))
+        {
+            var saveData = data.Value.GetAs<SaveDataPlayer>();
+            _playerContext.SetPlayerDataForLoad(saveData);
+            _uiMessage.ShowMessage("Player data loaded successfully.");
+        }
     }
 }
 
