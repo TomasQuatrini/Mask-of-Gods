@@ -32,7 +32,6 @@ public class EnemyRangedAttack : MonoBehaviour, IEnemyAttack
 
         _nextAttackTime = Time.time + _attackCooldown;
 
-        // Apuntar hacia el player
         Vector3 dir = (_ctx.Target.position - _shootOrigin.position).normalized;
         Quaternion rot = Quaternion.LookRotation(dir, Vector3.up);
 
