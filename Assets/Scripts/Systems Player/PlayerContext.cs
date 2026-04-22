@@ -12,11 +12,12 @@ public class PlayerContext : MonoBehaviour, IContext
     public PlayerCollisionController CollisionController { get; private set; }
     public PlayerHealth Health { get; private set; }
     public PlayerStaminaSM Stamina { get; private set; }
+    public IDefense Defense { get; private set; }
     public PlayerStatsComponent StatsComponent { get; private set; }
     public PlayerInventoryComponent Inventory { get; private set; }
 
     [Header("Data Scriptable Objects")]
-    [SerializeField] public MovementSettings MovementSettings;
+    public MovementSettings MovementSettings;
     private void Awake()
     {
         Rigidbody = GetComponent<Rigidbody>();
@@ -25,6 +26,7 @@ public class PlayerContext : MonoBehaviour, IContext
         CollisionController = GetComponent<PlayerCollisionController>();
         Health = GetComponentInChildren<PlayerHealth>();
         Stamina = GetComponentInChildren<PlayerStaminaSM>();
+        Defense = GetComponentInChildren<PlayerDefense>();
         StatsComponent = GetComponentInChildren<PlayerStatsComponent>();
         Inventory = GetComponentInChildren<PlayerInventoryComponent>();
     }

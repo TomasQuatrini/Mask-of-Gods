@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2855728939340950250}
   - component: {fileID: 9042016278937301599}
   - component: {fileID: 281104787166898653}
+  - component: {fileID: 2467244675530765114}
   m_Layer: 7
   m_Name: PlayerTest
   m_TagString: Player
@@ -71,7 +72,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: -3033667219593020291, guid: e9bb8c5fd27124c93bbf364c49307001, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -171,6 +172,18 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &2467244675530765114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382397178787076059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddae1c2aaa7cf4648a1de4092a915f2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4489186424883712242
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,6 +324,7 @@ GameObject:
   - component: {fileID: 2236636149997042038}
   - component: {fileID: 4742076383709758182}
   - component: {fileID: 6067888493484398214}
+  - component: {fileID: 2241186627507092516}
   m_Layer: 7
   m_Name: Logic
   m_TagString: Player
@@ -369,6 +383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _settings: {fileID: 11400000, guid: 9ab74d702b0e67a47a04268554ab2935, type: 2}
+  _knockbackDamping: 10
 --- !u!114 &6489353031852329517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,3 +436,18 @@ MonoBehaviour:
   _consumableSlots: 4
   _equippableSlots: 2
   _maskSlots: 4
+--- !u!114 &2241186627507092516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4968788885786030874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f245fbc1e9979b4b8191b688b4b6c77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: -3033667219593020291, guid: e9bb8c5fd27124c93bbf364c49307001, type: 3}
+  - {fileID: 2100000, guid: 0aa37164acf594e03876b4e0b590280e, type: 2}

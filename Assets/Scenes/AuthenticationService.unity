@@ -2787,6 +2787,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Message
       objectReference: {fileID: 0}
+    - target: {fileID: 1391823297175741895, guid: c96b164fca92b9c4abee419f41fbc627, type: 3}
+      propertyPath: m_text
+      value: sucedio un error porque....
+      objectReference: {fileID: 0}
+    - target: {fileID: 1391823297175741895, guid: c96b164fca92b9c4abee419f41fbc627, type: 3}
+      propertyPath: m_fontSize
+      value: 18.85
+      objectReference: {fileID: 0}
     - target: {fileID: 3363620505838073061, guid: c96b164fca92b9c4abee419f41fbc627, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

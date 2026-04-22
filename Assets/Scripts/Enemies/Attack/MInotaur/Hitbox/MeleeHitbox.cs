@@ -12,9 +12,17 @@ public class MeleeHitbox : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!gameObject.activeInHierarchy)
-            return;
+            return;      
         if (!other.CompareTag("Player"))
             return;
+        var defense = other.GetComponentInParent<IDefense>();
+        if (defense != null)
+        {
+            if (defense.isDefending == true)
+            {
+                return;
+            }
+        }
         var health = other.GetComponentInParent<IHealth>();
         if (health != null)
         {

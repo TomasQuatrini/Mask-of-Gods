@@ -25,8 +25,16 @@ public class Projectile : MonoBehaviour
     {
         if (!other.CompareTag("Player"))
             return;
-
-        var health = other.GetComponentInParent<IHealth>(); // cambia al nombre correcto
+        var defense = other.GetComponentInParent<IDefense>();
+        if (defense != null)
+        {
+            if (defense.isDefending == true)
+            {
+                Destroy(gameObject);
+                return;
+            }
+        }
+        var health = other.GetComponentInParent<IHealth>();
         if (health != null)
         {
             health.TakeDamage(_damage);
