@@ -27,6 +27,7 @@ public class InputPlayer : MonoBehaviour
     public event Action<bool> OnDefense;
     public event Action ConsumeHealthPotion;
     public event Action ConsumeStaminaPotion;
+    public event Action OnSwitchWeapon;
 
     private Vector3 _moveInput;
 
@@ -111,6 +112,7 @@ public class InputPlayer : MonoBehaviour
         SetLatches();
         GetAttacks();
         GetDefense();
+        GetSwitchWeapon();
     }
 
     private void SetLatches()
@@ -142,8 +144,6 @@ public class InputPlayer : MonoBehaviour
         }
     }
 
-
-
     #region GetInputs
 
     private Vector3 GetWorldMoveFromCamera(Vector3 localMove)
@@ -168,7 +168,6 @@ public class InputPlayer : MonoBehaviour
         }
         return worldMove;
     }
-
     private void GetDelta()
     {
         _axisCamera = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
@@ -280,6 +279,14 @@ public class InputPlayer : MonoBehaviour
         bool running = Input.GetKey(_keys.defense);
         IsDefending = running;
         OnDefense?.Invoke(running);
+    }
+
+    private void GetSwitchWeapon()
+    {
+        if (Input.GetKeyDown(_keys.switchWeapon))
+        {
+            OnSwitchWeapon?.Invoke();
+        }
     }
 
     #endregion

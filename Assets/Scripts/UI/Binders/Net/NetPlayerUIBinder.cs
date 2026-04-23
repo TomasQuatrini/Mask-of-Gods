@@ -8,6 +8,7 @@ public class NetPlayerUIBinder : NetworkBehaviour
     private PlayerStaminaSM _playerStaminaSM;
     private PlayerInventoryComponent _inventoryComponent;
     private PlayerContext _ctx;
+    [SerializeField] private HUDInventoryController _hudInventoryConsumable;
 
     public override void Spawned()
     {
@@ -22,7 +23,7 @@ public class NetPlayerUIBinder : NetworkBehaviour
             return;
         }
         if (_playerHealth == null && _playerStaminaSM == null) return;
-        HUDInventoryController.Instance.Bind(_inventoryComponent);
+        _hudInventoryConsumable.Bind(_inventoryComponent);
         HUDResourcesBarController.Instance.BindPlayer(_playerHealth, _playerStaminaSM);
     }    
 }

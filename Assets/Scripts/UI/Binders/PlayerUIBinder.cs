@@ -6,7 +6,9 @@ public class PlayerUIBinder : MonoBehaviour
     private PlayerHealth _playerHealth;
     private PlayerStaminaSM _playerStaminaSM;
     private PlayerInventoryComponent _inventoryComponent;
-    
+    [SerializeField] private HUDInventoryController _hudInventoryControllerEquippable;
+    [SerializeField] private HUDInventoryController _hudInventoryControllerConsumable;
+
     private PlayerContext _ctx;
 
     private void Awake()
@@ -32,9 +34,9 @@ public class PlayerUIBinder : MonoBehaviour
             Debug.LogWarning("HUDController instance not found. UI binding skipped.", this);
             return;
         }
-        if (HUDInventoryController.Instance == null)
+        if (_hudInventoryControllerEquippable && _hudInventoryControllerConsumable == null)
         {
-            Debug.LogWarning("HUDInventoryController instance not found. Inventory UI binding skipped.", this);
+            Debug.LogWarning("HUDInventoryController not found. Inventory UI binding skipped.", this);
         }
         else
         {
@@ -44,7 +46,8 @@ public class PlayerUIBinder : MonoBehaviour
             }
             else
             {
-                HUDInventoryController.Instance.Bind(_inventoryComponent);
+                _hudInventoryControllerEquippable.Bind(_inventoryComponent);
+                _hudInventoryControllerConsumable.Bind(_inventoryComponent);
             }
         }
         if (_playerHealth == null && _playerStaminaSM == null) 
@@ -53,6 +56,7 @@ public class PlayerUIBinder : MonoBehaviour
             return;
         }
         HUDResourcesBarController.Instance.BindPlayer(_playerHealth, _playerStaminaSM);
-        HUDInventoryController.Instance.Bind(_inventoryComponent);
+        _hudInventoryControllerConsumable.Bind(_inventoryComponent);
+        _hudInventoryControllerEquippable.Bind(_inventoryComponent);
     }
 }

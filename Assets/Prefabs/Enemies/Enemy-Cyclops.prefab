@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8551178585728393307}
   - component: {fileID: 2167017573497205119}
   - component: {fileID: 2129206054726783996}
+  - component: {fileID: 6641731198684777345}
   m_Layer: 0
   m_Name: Logic
   m_TagString: Untagged
@@ -75,6 +76,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 1
+--- !u!114 &6641731198684777345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740935868772647385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 967353876ab42774491bff164d8cc7c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  onHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1372151647251408365
 GameObject:
   m_ObjectHideFlags: 0

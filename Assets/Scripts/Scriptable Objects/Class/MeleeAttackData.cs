@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "EnemyMeleeAttackData", menuName = "ScriptableObjects/Game/Enemies/Attacks/MeleeData", order = 0)]
+[CreateAssetMenu(fileName = "MeleeAttackData", menuName = "ScriptableObjects/Game/Attacks/MeleeData", order = 0)]
 public class MeleeAttackData : ScriptableObject
 {
     public float damage = 10f;

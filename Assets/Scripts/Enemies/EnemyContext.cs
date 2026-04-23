@@ -8,6 +8,8 @@ public class EnemyContext : MonoBehaviour
     public Transform Transform { get; private set; }
     public IEnemyAttack ComponentAttack { get; private set; }
 
+    public IHealth Health => GetComponentInChildren<IHealth>();
+
     [SerializeField] private Transform _target;   // Asignar en inspector o por código
     public Transform Target => _target;
 

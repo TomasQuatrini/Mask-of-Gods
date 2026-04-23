@@ -5,19 +5,12 @@ namespace System.Inventory
 
     public class HUDInventoryController : MonoBehaviour
     {
-        public static HUDInventoryController Instance { get; private set; }
-
         private UIInventorySlotView[] _slotViews;
         private PlayerInventoryComponent _inventory;
+        [SerializeField] private InventoryType _inventoryType;
 
         public void Awake()
         {
-            if (Instance != null && Instance != this)
-            {
-                Destroy(this.gameObject);
-                return;
-            }
-            Instance = this;
             _slotViews = GetComponentsInChildren<UIInventorySlotView>();
             if (_slotViews == null || _slotViews.Length == 0)
             {
@@ -49,7 +42,7 @@ namespace System.Inventory
                 Debug.LogError("UIInventoryHudController: Inventory is null on Refresh.");
                 return;
             }
-            var source = _inventory.Consumable; //fijarse como variar entre diferentes inventarios
+            var source = GetSourceInventory();
 
             for (int i = 0; i < _slotViews.Length; i++)
             {
@@ -65,6 +58,22 @@ namespace System.Inventory
                     //Debug.Log($"[HUDInventoryController] Showing empty slot {i}");
                     view.ShowEmpty();
                 }
+            }
+        }
+
+        private Inventory GetSourceInventory()
+        {
+            switch (_inventoryType)
+            {
+                case InventoryType.Consumable:
+                    return _inventory.Consumable;
+                case InventoryType.Equippable:
+                    return _inventory.Equippable;
+                case InventoryType.Mask:
+                    return _inventory.Mask;
+                default:
+                    Debug.LogError($"[HUDInventoryController] Invalid inventory type {_inventoryType}");
+                    return null;
             }
         }
     }

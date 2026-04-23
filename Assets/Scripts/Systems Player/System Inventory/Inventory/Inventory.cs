@@ -67,4 +67,11 @@ namespace System.Inventory
             return true;
         }
     }
+
+    public enum InventoryType
+    {
+        Consumable,
+        Equippable,
+        Mask
+    }
 }

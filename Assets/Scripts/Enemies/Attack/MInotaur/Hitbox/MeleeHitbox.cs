@@ -51,6 +51,11 @@ public class MeleeHitbox : MonoBehaviour
             Debug.Log("no se puede aplicar el empuje");
         }
     }
+
+    public void SetAttackData(MeleeAttackData data)
+    {
+        attackData = data;
+    }
 }
 
 public enum Team

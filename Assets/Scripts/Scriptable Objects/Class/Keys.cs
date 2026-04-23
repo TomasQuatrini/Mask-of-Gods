@@ -15,4 +15,5 @@ public class Keys : ScriptableObject
     public KeyCode takedamage;
     public KeyCode consumeH;
     public KeyCode consumeS;
+    public KeyCode switchWeapon;
 }

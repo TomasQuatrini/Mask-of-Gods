@@ -31,9 +31,7 @@ public class EnemyHealth : MonoBehaviour, IHealth
             Die();
     }
 
-    /// <summary>
-    /// Restaura una cantidad de vida.
-    /// </summary>
+  
     public bool Heal(float amount)
     {
         if (_isDead || _currentHealth == _maxHealth) return false;
@@ -44,9 +42,7 @@ public class EnemyHealth : MonoBehaviour, IHealth
         return true;
     }
 
-    /// <summary>
-    /// El objeto muere.
-    /// </summary>
+   
     private void Die()
     {
         if (_isDead) return;
@@ -54,14 +50,10 @@ public class EnemyHealth : MonoBehaviour, IHealth
 
         Debug.Log($"{name} ha muerto.");
         onDeath?.Invoke();
-
-        // Ejemplo: Desactivar el objeto (podés cambiarlo)
-        gameObject.SetActive(false);
+       
+        Destroy(gameObject);
     }
-
-    /// <summary>
-    /// Restaura la vida al máximo.
-    /// </summary>
+    
     public void ResetHealth()
     {
         _isDead = false;
@@ -73,9 +65,5 @@ public class EnemyHealth : MonoBehaviour, IHealth
     public float MaxHealth => _maxHealth;
     public bool IsDead => _isDead;
 
-    void IHealth.Die()
-    {
-        Die();
-    }
 }
 
