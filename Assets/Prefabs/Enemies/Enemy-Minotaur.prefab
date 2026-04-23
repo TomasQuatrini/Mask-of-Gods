@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 1612463256919895914}
   - component: {fileID: 5035813991037067060}
   - component: {fileID: 5237832039331716414}
+  - component: {fileID: 5769722142206341383}
   m_Layer: 0
   m_Name: Logic
   m_TagString: Untagged
@@ -92,6 +93,19 @@ MonoBehaviour:
   _hitbox: {fileID: 4775683418618304711}
   Data: {fileID: 11400000, guid: 1ff6413ee0d82974980c698df5c3de24, type: 2}
   _renderer: {fileID: 6396413040836466175}
+--- !u!114 &5769722142206341383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024058723817631868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b74e57563b588c4cac1813efb3f663c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 1
 --- !u!1 &1350844812224345257
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,7 +472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8abf63833ecab11489d5f0b277431211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 4740138910566905775, guid: 8ab08cd77a13fd843a12c766fe5c0915, type: 3}
+  _target: {fileID: 0}
   EnemyData: {fileID: 11400000, guid: 7020691e0d205be4398b5212574eeb85, type: 2}
   _patrolPoints:
   - {fileID: 3723918393729378159}

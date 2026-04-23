@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7918490503702821084}
   - component: {fileID: 8551178585728393307}
   - component: {fileID: 2167017573497205119}
+  - component: {fileID: 2129206054726783996}
   m_Layer: 0
   m_Name: Logic
   m_TagString: Untagged
@@ -61,6 +62,19 @@ MonoBehaviour:
   _shootOrigin: {fileID: 8294599410651893410}
   _projectilePrefab: {fileID: 2013794555535228323, guid: af651395c4ca2b64fb7b1a295ab2d1cc, type: 3}
   _attackCooldown: 1.5
+--- !u!114 &2129206054726783996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740935868772647385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b74e57563b588c4cac1813efb3f663c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 1
 --- !u!1 &1372151647251408365
 GameObject:
   m_ObjectHideFlags: 0

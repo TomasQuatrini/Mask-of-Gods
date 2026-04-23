@@ -3,18 +3,27 @@ using UnityEngine;
 public class MeleeHitbox : MonoBehaviour
 {
     private Collider Collider;
-    public MeleeAttackData attackData;
+    [SerializeField] private MeleeAttackData attackData;
+    private CombatTarget owner;
 
     private void Awake()
     {
         Collider = GetComponent<Collider>();
+        CombatTarget target = GetComponentInParent<CombatTarget>();
     }
     private void OnTriggerEnter(Collider other)
     {
         if (!gameObject.activeInHierarchy)
             return;      
-        if (!other.CompareTag("Player"))
+        CombatTarget target = other.GetComponentInParent<CombatTarget>();
+        if (target == null || owner == null)
+        {
             return;
+        }
+        if (target.Team == owner.Team)
+        {
+            return;
+        }
         var defense = other.GetComponentInParent<IDefense>();
         if (defense != null)
         {
@@ -42,4 +51,10 @@ public class MeleeHitbox : MonoBehaviour
             Debug.Log("no se puede aplicar el empuje");
         }
     }
+}
+
+public enum Team
+{
+    Player,
+    Enemy
 }
