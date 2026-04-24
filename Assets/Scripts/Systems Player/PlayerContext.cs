@@ -6,6 +6,7 @@ public class PlayerContext : MonoBehaviour, IContext
     [Header("Root")]
     public Rigidbody Rigidbody { get; private set; }
     public CapsuleCollider Collider { get; private set; }
+    public Faction Faction { get { return Faction.Player; } }
 
     [Header("Logic Components")]   
     public IMovement Movement { get; private set; }

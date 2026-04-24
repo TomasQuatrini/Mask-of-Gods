@@ -60,7 +60,6 @@ public class EnemyAttackState : IEnemyMovementState
                     10f * Time.deltaTime
                 );
             }
-            Debug.Log("Ejecutando Logica de ataque");
             _ctx.ComponentAttack.Attack();
         }
         else

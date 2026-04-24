@@ -3,28 +3,28 @@ using UnityEngine;
 public class MeleeHitbox : MonoBehaviour
 {
     private Collider Collider;
-    [SerializeField] private MeleeAttackData attackData;
-    private CombatTarget owner;
+    [SerializeField] private MeleeAttackData _attackData;
+    [SerializeField] private Faction _factionTarget;
 
     private void Awake()
     {
         Collider = GetComponent<Collider>();
-        CombatTarget target = GetComponentInParent<CombatTarget>();
     }
     private void OnTriggerEnter(Collider other)
     {
         if (!gameObject.activeInHierarchy)
-            return;      
-        CombatTarget target = other.GetComponentInParent<CombatTarget>();
-        if (target == null || owner == null)
-        {
             return;
-        }
-        if (target.Team == owner.Team)
+
+        var targetFaction = other.GetComponentInParent<IContext>()?.Faction;
+        if (targetFaction != null)
         {
-            return;
+            if (targetFaction != _factionTarget)
+            {
+                return;
+            }
         }
         var defense = other.GetComponentInParent<IDefense>();
+        Debug.Log($"MeleeHitbox: Colisionó con {other.name}, Defensa: {defense != null}");
         if (defense != null)
         {
             if (defense.isDefending == true)
@@ -33,33 +33,31 @@ public class MeleeHitbox : MonoBehaviour
             }
         }
         var health = other.GetComponentInParent<IHealth>();
+        Debug.Log($"MeleeHitbox: Colisionó con {other.name}, Salud: {health != null}");
         if (health != null)
         {
-            health.TakeDamage(attackData.damage);
+            health.TakeDamage(_attackData.damage);
         }
         var knock = other.GetComponentInParent<IKnockbackeable>();
         if (knock != null)
         {
             Vector3 dir = (other.transform.position - transform.position).normalized;
             dir.y = 0f;
-            float force = attackData.knockbackForce;
-            float duration = attackData.knockbackDuration;
+            float force = _attackData.knockbackForce;
+            float duration = _attackData.knockbackDuration;
             knock.ApplyKnockback(dir * force, duration);
-        }
-        else
-        {
-            Debug.Log("no se puede aplicar el empuje");
         }
     }
 
     public void SetAttackData(MeleeAttackData data)
     {
-        attackData = data;
+        _attackData = data;
     }
 }
 
-public enum Team
+public enum Faction
 {
     Player,
-    Enemy
+    Enemy,
+    Neutral
 }

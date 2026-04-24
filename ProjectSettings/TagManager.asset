@@ -8,6 +8,7 @@ TagManager:
   - PlayerMask
   - Damage
   - Enemy
+  - MeleeHitbox
   layers:
   - Default
   - TransparentFX
@@ -19,8 +20,8 @@ TagManager:
   - Player
   - Pickups
   - Shield
-  - 
-  - 
+  - MeleeHitbox
+  - Enemy
   - 
   - 
   - 
