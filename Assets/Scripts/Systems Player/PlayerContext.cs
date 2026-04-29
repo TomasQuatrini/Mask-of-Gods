@@ -19,6 +19,8 @@ public class PlayerContext : MonoBehaviour, IContext
 
     [Header("Data Scriptable Objects")]
     public MovementSettings MovementSettings;
+
+    IHealth IContext.Health => Health;
     private void Awake()
     {
         Rigidbody = GetComponent<Rigidbody>();

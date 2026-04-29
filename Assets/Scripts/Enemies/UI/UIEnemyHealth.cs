@@ -1,29 +1,33 @@
-
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIEnemyHealth : MonoBehaviour
+public class UIBarOtherObjectHealth : MonoBehaviour
 {
-    [SerializeField] private EnemyHealth _enemyHealth;
+    private IHealth _health;
     [SerializeField] private Image _healthFill;
-    public void Start()
+    private void Start()
     {
-        if (_enemyHealth == null)
-            _enemyHealth = GetComponentInParent<EnemyHealth>();
-
-        if (_enemyHealth == null)
+        if (_health == null)
+        {
+            _health = GetComponentInParent<IHealth>();
+            if (_health == null )
+            {
+                _health = GetComponentInParent<IContext>().Health;
+            }
+        }
+        if (_health == null)
         {
             Debug.LogError("Health component not found in parent");
         }
-        _enemyHealth.OnHealthChanged += HandleHealthChanged;
+        _health.OnHealthChanged += HandleHealthChanged;
 
-        HandleHealthChanged(_enemyHealth.CurrentHealth);
+        HandleHealthChanged(_health.CurrentHealth);
     }
 
     private void OnDestroy()
     {
-        if (_enemyHealth != null)
-            _enemyHealth.OnHealthChanged -= HandleHealthChanged;
+        if (_health != null)
+            _health.OnHealthChanged -= HandleHealthChanged;
     }
 
     private void LateUpdate()
@@ -39,7 +43,6 @@ public class UIEnemyHealth : MonoBehaviour
     private void HandleHealthChanged(float health)
     {
         if (_healthFill != null)
-            _healthFill.fillAmount = health / _enemyHealth.MaxHealth;
-
+            _healthFill.fillAmount = health / _health.MaxHealth;
     }
 }

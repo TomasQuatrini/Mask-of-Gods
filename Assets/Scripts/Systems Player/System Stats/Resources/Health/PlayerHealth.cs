@@ -1,6 +1,7 @@
 using Game.Stats;
 using UnityEngine.UI;
 using UnityEngine;
+using System;
 
 public class PlayerHealth : MonoBehaviour, IHealth
 {    
@@ -13,6 +14,7 @@ public class PlayerHealth : MonoBehaviour, IHealth
     public Resource HealthResource => _healthResource;
     public float CurrentHealth => _healthResource?.Current ?? 0f;
     public float MaxHealth => _healthResource?.Max ?? 0f;
+    public event Action<float> OnHealthChanged;
 
     private void Awake()
     {

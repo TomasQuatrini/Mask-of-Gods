@@ -23,7 +23,9 @@ public class EnemyContext : MonoBehaviour, IContext
     [Header("Detección / Ataque")]
       
     public float DetectionRadius => EnemyData.detectionRadius; 
-    public float AttackRange => EnemyData.attackRange; 
+    public float AttackRange => EnemyData.attackRange;
+
+    IHealth IContext.Health => Health;
 
     private void Awake()
     {

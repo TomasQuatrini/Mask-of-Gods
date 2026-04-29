@@ -7,8 +7,12 @@ public class EnemyHealth : MonoBehaviour, IHealth
     [SerializeField] private float _maxHealth = 100f;
     [SerializeField] private float _currentHealth;
     public bool IsDead => _currentHealth <= 0f;
+    public float CurrentHealth => _currentHealth;
+    public float MaxHealth => _maxHealth;
+
     public event Action OnDeath;
     public event Action<float> OnHealthChanged;
+
     private void Awake()
     {
         _currentHealth = _maxHealth;
@@ -45,7 +49,5 @@ public class EnemyHealth : MonoBehaviour, IHealth
         _currentHealth = _maxHealth;
         OnHealthChanged?.Invoke(_currentHealth);
     }
-    public float CurrentHealth => _currentHealth;
-    public float MaxHealth => _maxHealth;
 }
 
