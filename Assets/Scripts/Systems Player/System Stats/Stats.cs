@@ -20,19 +20,25 @@ namespace Game.Stats
 
     public class PlayerStats
     {
-        public Dictionary<StatType, Stat> _stats = new Dictionary<StatType, Stat>();
+        public Dictionary<StatType, Stat> stats = new Dictionary<StatType, Stat>();
         public Stat Get(StatType t)
         {
-            _stats.TryGetValue(t, out var stat);
+            stats.TryGetValue(t, out var stat);
             return stat;
+        }
+
+        public void StatUp(StatType t)
+        {             
+            if (stats.TryGetValue(t, out var stat))
+            {
+                stat.AddValue(1f);
+            }
         }
 
         public void Init()
         {
-            _stats[StatType.Health] = new Stat("Health", 1f);
-            _stats[StatType.Stamina] = new Stat("Stamina", 1f);
-            _stats[StatType.Damage] = new Stat("Damage", 1f);
-            _stats[StatType.Defense] = new Stat("Defense", 1f);
+            stats[StatType.Health] = new Stat("Health", 1f);
+            stats[StatType.Stamina] = new Stat("Stamina", 1f);           
         }
     }
 

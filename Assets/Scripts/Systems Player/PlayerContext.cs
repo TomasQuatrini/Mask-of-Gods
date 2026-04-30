@@ -16,6 +16,7 @@ public class PlayerContext : MonoBehaviour, IContext
     public IDefense Defense { get; private set; }
     public PlayerStatsComponent StatsComponent { get; private set; }
     public PlayerInventoryComponent Inventory { get; private set; }
+    public PlayerLevel Level { get; private set; }
 
     [Header("Data Scriptable Objects")]
     public MovementSettings MovementSettings;

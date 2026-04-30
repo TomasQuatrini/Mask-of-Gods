@@ -29,7 +29,7 @@ public class PlayerUIBinder : MonoBehaviour
 
     private void Start()
     {
-        if (HUDResourcesBarController.Instance == null)
+        if (HUD_ResourcesBarController.Instance == null)
         {
             Debug.LogWarning("HUDController instance not found. UI binding skipped.", this);
             return;
@@ -55,7 +55,7 @@ public class PlayerUIBinder : MonoBehaviour
             Debug.LogWarning("PlayerHealth and PlayerStaminaSM are both null. UI binding skipped.", this);
             return;
         }
-        HUDResourcesBarController.Instance.BindPlayer(_playerHealth, _playerStaminaSM);
+        HUD_ResourcesBarController.Instance.BindPlayer(_playerHealth, _playerStaminaSM);
         _hudInventoryControllerConsumable.Bind(_inventoryComponent);
         _hudInventoryControllerEquippable.Bind(_inventoryComponent);
     }
