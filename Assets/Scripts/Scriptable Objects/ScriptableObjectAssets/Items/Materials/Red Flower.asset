@@ -9,9 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c148d5c25fd87b438eee92fc1d8d3fd, type: 3}
-  m_Name: BasicAttackSetting
+  m_Script: {fileID: 11500000, guid: 10ffc47c381032943bd86680b8b25817, type: 3}
+  m_Name: Red Flower
   m_EditorClassIdentifier: 
-  attackSpeed: 2
-  attackCooldown: 4
-  attackDuration: 2
+  Name: Red Flower
+  Id: flower_red
+  Type: 2
+  EffectType: 3
+  EffectAmount: 0
+  stackable: 1
+  maxStack: 99
+  Icon: {fileID: 21300000, guid: 24b92353af46fb64cbb0d8457a48bf5c, type: 3}

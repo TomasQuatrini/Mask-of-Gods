@@ -18,4 +18,13 @@ namespace System.Inventory
 
         public abstract void Use(Inventory owner);
     }
+    public class EquippableItemData : ItemData
+    {
+        bool stackable => false;
+
+        public override void Use(Inventory owner)
+        {
+
+        }
+    }
 }

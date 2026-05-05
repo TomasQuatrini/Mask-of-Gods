@@ -48,5 +48,10 @@ namespace System.Inventory
             }
             return removed;                   
         }
+
+        public void Clear()
+        {
+            stack = null;
+        }
     }
 }

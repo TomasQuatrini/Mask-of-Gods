@@ -41,9 +41,9 @@ namespace System.Inventory
             return false;
         }
 
-        public bool RemoveItem(ItemData item)
+        public bool RemoveItem(ItemData item, int quantity)
         {
-            int consume = 1;
+            int consume = quantity;
             if (item.stackable)
             {
                 foreach (var slot in slots)
@@ -57,19 +57,51 @@ namespace System.Inventory
             return false;
         }
 
-        public bool ConsumeItem(ItemData item)
+        public bool ConsumeItem(ItemData item, int count)
         {
             if (item == null) return false;
             if (item.Type != ItemType.Consumable) return false;
-            RemoveItem(item); 
+            RemoveItem(item, count);
             return true;
         }
-    }
 
+        public int GetItemQuantity(ItemData item)
+        {
+            int quantity = 0;
+            foreach (var slot in slots)
+            {
+                if (!slot.IsEmpty && slot.stack.item == item)
+                {
+                    quantity += slot.stack.quantity;
+                }
+            }
+            return quantity;
+        }
+
+        public void CompactSlots()
+        {
+            List<ItemStack> stacks = new List<ItemStack>();
+            foreach (var slot in slots)
+            {
+                if (!slot.IsEmpty)
+                {
+                    stacks.Add(slot.stack);
+                }
+            }
+            foreach (Slot slot in slots)
+            {
+                slot.Clear();
+            }
+
+            for (int i = 0; i < stacks.Count; i++)
+            {
+                slots[i].stack = stacks[i];
+            }
+        }
+    }
     public enum InventoryType
     {
-        Consumable,
-        Equippable,
-        Mask
+        Stackable,
+        Equippable
     }
 }

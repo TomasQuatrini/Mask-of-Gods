@@ -6,26 +6,37 @@ public class CraftingSystem : MonoBehaviour
 {
     [SerializeField] private PlayerInventoryComponent _inventoryComponent;
 
-    public bool CanCraft(RecipeData recipe)
+    public bool CanCraft(Recipe recipe)
     {
         if (recipe == null)
         {
-            Debug.LogError("CraftingSystem: Recipe is null in CanCraft.");
+            Debug.Log("CraftingSystem: Recipe is null.");
+
             return false;
         }
-
-        // validar ingredientes
+        foreach (var ingredient in recipe.Ingredients)
+        {
+            if (!_inventoryComponent.HasItem(ingredient.item, ingredient.quantity))
+            {
+                Debug.Log($"CraftingSystem: Missing ingredient {ingredient.item.name} x{ingredient.quantity}.");
+                return false;
+            }
+        }
         return true;
     }
 
-    public bool TryCraft(RecipeData recipe)
-    {
+    public bool TryCraft(Recipe recipe)
+    { 
         if (!CanCraft(recipe))
         {
+            Debug.Log("CraftingSystem: Cannot craft, missing ingredients.");
             return false;
         }
-        // consumir ingredientes
-        // agregar resultado al inventario
+        foreach (var ingredient in recipe.Ingredients)
+        {
+            _inventoryComponent.RemoveItem(ingredient.item, ingredient.quantity);
+        }        
+        _inventoryComponent.AddItem(recipe.Result.item, recipe.Result.quantity);
         return true;
     }
 }

@@ -49,7 +49,7 @@ public class ItemConsume : MonoBehaviour
             var TryConsume = _health.Heal(slot.stack.item.EffectAmount);
             if (TryConsume is true)
             {
-                _inventory.ConsumeItem(slot.stack.item);
+                _inventory.ConsumeItem(slot.stack.item, 1);
             }
             break;
         }
@@ -68,7 +68,7 @@ public class ItemConsume : MonoBehaviour
             var TryConsume = _stamina.TryRestore(slot.stack.item.EffectAmount); 
             if (TryConsume is true)
             {
-                _inventory.ConsumeItem(slot.stack.item);
+                _inventory.ConsumeItem(slot.stack.item, 1);
             }
             break;
         }

@@ -104,7 +104,7 @@ public class NetItemConsume : NetworkBehaviour
             return;
         }
 
-        bool consumed = _inventory.ConsumeItem(itemData);
+        bool consumed = _inventory.ConsumeItem(itemData, 1);
         if (!consumed)
         {
             Debug.Log($"[NetItemConsume] No había {itemData.Name} para consumir");

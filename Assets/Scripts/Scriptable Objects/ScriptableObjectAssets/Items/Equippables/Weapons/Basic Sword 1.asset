@@ -9,19 +9,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 955846be7c757e6459efe7330d1c0a3d, type: 3}
-  m_Name: Sword1
+  m_Script: {fileID: 11500000, guid: 0ac2718280dcec04ab689c16fd188aae, type: 3}
+  m_Name: Basic Sword 1
   m_EditorClassIdentifier: 
-  Name: 
-  Id: 
+  Name: Basic Sword 1
+  Id: sword_basic_1
   Type: 1
   EffectType: 2
-  EffectAmount: 0
+  EffectAmount: 20
   stackable: 0
   maxStack: 1
   Icon: {fileID: 21300000, guid: 6ded2b788f16adb47945936108a70646, type: 3}
   weaponAttackType: 1
-  staminaCost: 10
+  staminaCost: 15
   cooldown: 0.5
   meleeAttackData: {fileID: 11400000, guid: fc14d0c212a86bc4ea3ec249f1c51ee6, type: 2}
   projectilePrefab: {fileID: 0}

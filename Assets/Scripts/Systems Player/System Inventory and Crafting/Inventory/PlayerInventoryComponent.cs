@@ -5,14 +5,15 @@ namespace System.Inventory
 {
     public class PlayerInventoryComponent : MonoBehaviour
     {
-        [SerializeField] private int _consumableSlots = 4;
-        [SerializeField] private int _equippableSlots = 2;
+        [SerializeField] private int _stackableSlots = 6;
+        [SerializeField] private int _equippableSlots = 3;
 
-        private Inventory _consumable;
+        private Inventory _stackable;
         private Inventory _equippable;
+        
         public WeaponItemData EquippedWeapon { get; private set; }
 
-        public IReadOnlyCollection<Slot> ConsumableSlots => _consumable.slots.AsReadOnly();
+        public IReadOnlyCollection<Slot> ConsumableSlots => _stackable.slots.AsReadOnly();
         public IReadOnlyCollection<Slot> EquippableSlots => _equippable.slots.AsReadOnly();
 
         public System.Action OnInventoryChanged;
@@ -21,7 +22,7 @@ namespace System.Inventory
 
         private void Awake()
         {
-            _consumable = new Inventory(_consumableSlots);
+            _stackable = new Inventory(_stackableSlots);
             _equippable = new Inventory(_equippableSlots);
         }
 
@@ -35,10 +36,13 @@ namespace System.Inventory
             switch (item.Type)
             {
                 case ItemType.Consumable:
-                    target = _consumable;
+                    target = _stackable;
                     break;
                 case ItemType.Equippable:
                     target = _equippable;
+                    break;
+                case ItemType.Material:
+                    target = _stackable;
                     break;
                 default:
                     return false;
@@ -56,7 +60,7 @@ namespace System.Inventory
             return true;
         }
 
-        public bool ConsumeItem(ItemData item)
+        public bool ConsumeItem(ItemData item, int quantity)
         {
             if (item == null)
             {
@@ -66,53 +70,42 @@ namespace System.Inventory
             switch (item.Type)
             {
                 case ItemType.Consumable:
-                    target = _consumable;
+                    target = _stackable;
                     break;
                 case ItemType.Equippable:
                     target = _equippable;
                     break;
+                case ItemType.Material:
+                    target = _stackable;
+                    break;
                 default:
                     return false;
+            }
+            if (target.GetItemQuantity(item) < quantity)
+            {
+                return false;
             }
             if (target == null)
             {
                 return false;
             }
-            bool removed = target.ConsumeItem(item);
+            bool removed = target.ConsumeItem(item, quantity);
             OnInventoryChanged?.Invoke();
             return removed;
         }
 
-        public bool HasItem(ItemData item)
+        public bool HasItem(ItemData item, int quantity)
         {
-            if (item == null)
+            if (item == null || quantity <= 0)
             {
                 return false;
             }
-            Inventory target;
-            switch (item.Type)
-            {
-                case ItemType.Consumable:
-                    target = _consumable;
-                    break;
-                case ItemType.Equippable:
-                    target = _equippable;
-                    break;
-                default:
-                    return false;
-            }
+            Inventory target = GetInventory(item.Type);
             if (target == null)
             {
                 return false;
             }
-            foreach (var slot in target.slots)
-            {
-                if (!slot.IsEmpty && slot.stack.item == item)
-                {
-                    return true;
-                }
-            }
-            return false;
+            return GetItemQuantity(item) >= quantity;
         }
 
         public int GetItemQuantity(ItemData item)
@@ -121,45 +114,61 @@ namespace System.Inventory
             {
                 return 0;
             }
-            Inventory target;
-            switch (item.Type)
-            {
-                case ItemType.Consumable:
-                    target = _consumable;
-                    break;
-                case ItemType.Equippable:
-                    target = _equippable;
-                    break;
-                default:
-                    return 0;
-            }
+            Inventory target = GetInventory(item.Type);
             if (target == null)
             {
                 return 0;
             }
-            foreach (var slot in target.slots)
+            return target.GetItemQuantity(item);
+        }
+
+        public bool RemoveItem(ItemData item, int quantity)
+        {
+            if (!HasItem(item, quantity))
             {
-                if (!slot.IsEmpty && slot.stack.item == item)
-                {
-                    return slot.stack.quantity;
-                }
+                return false;
             }
-            return 0;
+            Inventory target = GetInventory(item.Type);
+            if (target == null)
+            {
+                return false;
+            }
+            bool removed = target.RemoveItem(item, quantity);
+            if (removed)
+            {
+                target.CompactSlots();
+                OnInventoryChanged?.Invoke();
+            }
+            return removed;
         }
 
         public Inventory GetInventory(ItemType type)
         {
             switch (type)
             {
-                case ItemType.Consumable:
-                    return _consumable;
+                case ItemType.Material:
+                    return _stackable;
                 case ItemType.Equippable:
                     return _equippable;
+                case ItemType.Consumable:
+                    return _stackable;
                 default:
                     return null;
             }
         }
 
+        public Inventory GetInventoryByType(InventoryType type)
+        {
+            if (type == InventoryType.Stackable)
+            {
+                return _stackable;
+            }
+            if (type == InventoryType.Equippable)
+            {
+                return _equippable;
+            }
+            return null;
+        }
         #region Weapon Management
 
         public bool EquipWeapon(WeaponItemData weapon)

@@ -2,12 +2,12 @@ namespace System.Inventory
 {
     public enum ItemType
     {
-        Consumable, Equippable, Mask
+        Consumable, Equippable, Material, Quest, None
     }
 
     public enum ConsumableType
     {
-        Health, Stamina
+        Health, Stamina, None
     }
 
     public enum EffectType

@@ -7,7 +7,7 @@ namespace System.Inventory
     {
         private UIInventorySlotView[] _slotViews;
         private PlayerInventoryComponent _inventory;
-        [SerializeField] private InventoryType _inventoryType;
+        [SerializeField] private InventoryViewType _inventoryType;
 
         public void Awake()
         {
@@ -17,6 +17,7 @@ namespace System.Inventory
                 Debug.LogError("UIInventoryHudController: No slot views found in children.");
             }
         }
+
         public void Bind(PlayerInventoryComponent inventory)
         {
             _inventory = inventory;
@@ -65,14 +66,20 @@ namespace System.Inventory
         {
             switch (_inventoryType)
             {
-                case InventoryType.Consumable:
-                    return _inventory.GetInventory(ItemType.Consumable);
-                case InventoryType.Equippable:
-                    return _inventory.GetInventory(ItemType.Equippable);
+                case InventoryViewType.Stackable:
+                    return _inventory.GetInventoryByType(InventoryType.Stackable);
+                case InventoryViewType.Equippable:
+                    return _inventory.GetInventoryByType(InventoryType.Equippable);
                 default:
                     Debug.LogError($"[HUDInventoryController] Invalid inventory type {_inventoryType}");
                     return null;
             }
+        }
+
+        public enum InventoryViewType
+        {
+            Stackable,
+            Equippable
         }
     }
 }
