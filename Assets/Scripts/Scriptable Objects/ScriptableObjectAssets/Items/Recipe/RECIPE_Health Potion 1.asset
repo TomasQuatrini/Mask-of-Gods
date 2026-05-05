@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdcb2be9b76df0d4983418316a6e7c40, type: 3}
   m_Name: RECIPE_Health Potion 1
   m_EditorClassIdentifier: 
+  name: Health Potion 1
   ingredients:
   - item: {fileID: 11400000, guid: e149bf6554f1482488fd5a695add38c9, type: 2}
     quantity: 2

@@ -8,7 +8,7 @@ public class UI_Message : MonoBehaviour
     private Button closeWindowButton;
     [SerializeField] private GameObject root;
 
-    
+    public static UI_Message Instance { get; private set; }
     void Awake()
     {             
         if (root == null) 

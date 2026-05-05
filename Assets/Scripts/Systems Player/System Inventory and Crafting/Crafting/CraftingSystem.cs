@@ -1,8 +1,9 @@
 using UnityEngine;
 using System.Inventory;
+using UnityEditor.VersionControl;
 
 
-public class CraftingSystem : MonoBehaviour
+public class CraftingSystem : MonoBehaviour, ICraftingSystem
 {
     [SerializeField] private PlayerInventoryComponent _inventoryComponent;
 
@@ -10,7 +11,8 @@ public class CraftingSystem : MonoBehaviour
     {
         if (recipe == null)
         {
-            Debug.Log("CraftingSystem: Recipe is null.");
+            
+            
 
             return false;
         }

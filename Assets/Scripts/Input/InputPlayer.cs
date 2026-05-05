@@ -15,6 +15,7 @@ public class InputPlayer : MonoBehaviour
     public bool TakeDamaged { get; private set; } //provisorio
     public bool ConsumePotion_Stamina { get; private set; }
     public bool ConsumePotion_Health { get; private set; }
+    public bool Interact { get; private set; }
 
 
     [SerializeField] private Keys _keys;
@@ -28,6 +29,7 @@ public class InputPlayer : MonoBehaviour
     public event Action ConsumeHealthPotion;
     public event Action ConsumeStaminaPotion;
     public event Action OnSwitchWeapon;
+    public event Action TryInteract;
 
     private Vector3 _moveInput;
 
@@ -113,6 +115,7 @@ public class InputPlayer : MonoBehaviour
         GetAttacks();
         GetDefense();
         GetSwitchWeapon();
+        GetInteract();
     }
 
     private void SetLatches()
@@ -286,6 +289,19 @@ public class InputPlayer : MonoBehaviour
         if (Input.GetKeyDown(_keys.switchWeapon))
         {
             OnSwitchWeapon?.Invoke();
+        }
+    }
+
+    private void GetInteract()
+    {
+        if (Input.GetKeyDown(_keys.interact))
+        {
+            Interact = true;
+            TryInteract?.Invoke();
+        }
+        else
+        {
+            Interact = false;
         }
     }
 
