@@ -6,10 +6,6 @@ namespace System.Inventory
     [System.Serializable]
     public class EquippableItemData : ItemData
     {
-        // Add properties specific to equippable items here
-        new bool stackable = false;
-        public bool Stackable { get => stackable; set => stackable = value; }
-
         public override void Use(Inventory owner) //inventory owner in parentesis
         {
             // owner.EquipItem(this);

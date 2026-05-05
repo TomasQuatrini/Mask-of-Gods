@@ -7,12 +7,13 @@ namespace System.Inventory
     {
         [SerializeField] private int _consumableSlots = 4;
         [SerializeField] private int _equippableSlots = 2;
-        [SerializeField] private int _maskSlots = 4;
 
-        public Inventory Consumable { get; private set; }
-        public Inventory Equippable { get; private set; }
-        public Inventory Mask { get; private set; }
+        private Inventory _consumable;
+        private Inventory _equippable;
         public WeaponItemData EquippedWeapon { get; private set; }
+
+        public IReadOnlyCollection<Slot> ConsumableSlots => _consumable.slots.AsReadOnly();
+        public IReadOnlyCollection<Slot> EquippableSlots => _equippable.slots.AsReadOnly();
 
         public System.Action OnInventoryChanged;
         public System.Action<WeaponItemData> OnWeaponEquipped;
@@ -20,9 +21,8 @@ namespace System.Inventory
 
         private void Awake()
         {
-            Consumable = new Inventory(_consumableSlots);
-            Equippable = new Inventory(_equippableSlots);
-            Mask = new Inventory(_maskSlots);
+            _consumable = new Inventory(_consumableSlots);
+            _equippable = new Inventory(_equippableSlots);
         }
 
         public bool AddItem(ItemData item, int quantity)
@@ -31,17 +31,14 @@ namespace System.Inventory
             {
                 return false;
             }
-            Inventory target = null;
+            Inventory target;
             switch (item.Type)
             {
                 case ItemType.Consumable:
-                    target = Consumable;
+                    target = _consumable;
                     break;
                 case ItemType.Equippable:
-                    target = Equippable;
-                    break;
-                case ItemType.Mask:
-                    target = Mask;
+                    target = _equippable;
                     break;
                 default:
                     return false;
@@ -65,17 +62,14 @@ namespace System.Inventory
             {
                 return false;
             }
-            Inventory target = null;
+            Inventory target;
             switch (item.Type)
             {
                 case ItemType.Consumable:
-                    target = Consumable;
+                    target = _consumable;
                     break;
                 case ItemType.Equippable:
-                    target = Equippable;
-                    break;
-                case ItemType.Mask:
-                    target = Mask;
+                    target = _equippable;
                     break;
                 default:
                     return false;
@@ -88,6 +82,85 @@ namespace System.Inventory
             OnInventoryChanged?.Invoke();
             return removed;
         }
+
+        public bool HasItem(ItemData item)
+        {
+            if (item == null)
+            {
+                return false;
+            }
+            Inventory target;
+            switch (item.Type)
+            {
+                case ItemType.Consumable:
+                    target = _consumable;
+                    break;
+                case ItemType.Equippable:
+                    target = _equippable;
+                    break;
+                default:
+                    return false;
+            }
+            if (target == null)
+            {
+                return false;
+            }
+            foreach (var slot in target.slots)
+            {
+                if (!slot.IsEmpty && slot.stack.item == item)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public int GetItemQuantity(ItemData item)
+        {
+            if (item == null)
+            {
+                return 0;
+            }
+            Inventory target;
+            switch (item.Type)
+            {
+                case ItemType.Consumable:
+                    target = _consumable;
+                    break;
+                case ItemType.Equippable:
+                    target = _equippable;
+                    break;
+                default:
+                    return 0;
+            }
+            if (target == null)
+            {
+                return 0;
+            }
+            foreach (var slot in target.slots)
+            {
+                if (!slot.IsEmpty && slot.stack.item == item)
+                {
+                    return slot.stack.quantity;
+                }
+            }
+            return 0;
+        }
+
+        public Inventory GetInventory(ItemType type)
+        {
+            switch (type)
+            {
+                case ItemType.Consumable:
+                    return _consumable;
+                case ItemType.Equippable:
+                    return _equippable;
+                default:
+                    return null;
+            }
+        }
+
+        #region Weapon Management
 
         public bool EquipWeapon(WeaponItemData weapon)
         {
@@ -110,11 +183,11 @@ namespace System.Inventory
 
         public bool EquipWeaponFromEquippableSlot(int slotIndex)
         {
-            if (slotIndex < 0 || slotIndex >= Equippable.slots.Count)
+            if (slotIndex < 0 || slotIndex >= _equippable.slots.Count)
             {
                 return false;
             }
-            var slot = Equippable.slots[slotIndex];
+            var slot = _equippable.slots[slotIndex];
             if (slot.IsEmpty || !(slot.stack.item is WeaponItemData weapon))
             {
                 return false;
@@ -126,7 +199,7 @@ namespace System.Inventory
         public List<WeaponItemData> GetWeaponsInInventory()
         {
             List<WeaponItemData> weapons = new List<WeaponItemData>();
-            foreach (var slot in Equippable.slots)
+            foreach (var slot in _equippable.slots)
             {
                 if (!slot.IsEmpty && slot.stack.item is WeaponItemData weapon)
                 {
@@ -175,5 +248,7 @@ namespace System.Inventory
             int previousIndex = (currentIndex - 1 + weapons.Count) % weapons.Count;
             return EquipWeapon(weapons[previousIndex]);
         }
+
+        #endregion
     }
 }

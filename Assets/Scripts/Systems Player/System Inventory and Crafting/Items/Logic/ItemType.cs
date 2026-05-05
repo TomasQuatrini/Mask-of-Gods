@@ -12,11 +12,11 @@ namespace System.Inventory
 
     public enum EffectType
     {
-        Heal, StaminaRestore, Damage
+        Heal, StaminaRestore, Damage, None
     }
 
     public enum WeaponAttackType
     {
-        None , Melee, Ranged, Magic
+        None, Melee, Ranged, Magic
     }
 }

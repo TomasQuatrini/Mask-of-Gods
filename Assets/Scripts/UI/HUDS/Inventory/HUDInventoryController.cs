@@ -66,11 +66,9 @@ namespace System.Inventory
             switch (_inventoryType)
             {
                 case InventoryType.Consumable:
-                    return _inventory.Consumable;
+                    return _inventory.GetInventory(ItemType.Consumable);
                 case InventoryType.Equippable:
-                    return _inventory.Equippable;
-                case InventoryType.Mask:
-                    return _inventory.Mask;
+                    return _inventory.GetInventory(ItemType.Equippable);
                 default:
                     Debug.LogError($"[HUDInventoryController] Invalid inventory type {_inventoryType}");
                     return null;

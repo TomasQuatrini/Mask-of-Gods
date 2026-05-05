@@ -1,6 +1,4 @@
-using JetBrains.Annotations;
 using System.Collections.Generic;
-using UnityEngine;
 namespace System.Inventory
 {
     public class Inventory

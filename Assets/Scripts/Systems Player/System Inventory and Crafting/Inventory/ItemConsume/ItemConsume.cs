@@ -37,9 +37,9 @@ public class ItemConsume : MonoBehaviour
 
     private void ConsumeHealthPotion()
     {
-        if (_inventory.Consumable == null) return;
-        if (_inventory.Consumable.slots.Count < 1) return;
-        foreach (var slot in _inventory.Consumable.slots)
+        if (_inventory.GetInventory(ItemType.Consumable) == null) return;
+        if (_inventory.GetInventory(ItemType.Consumable).slots.Count < 1) return;
+        foreach (var slot in _inventory.GetInventory(ItemType.Consumable).slots)
         {
             if (slot.IsEmpty) continue;
             if (slot.stack.item == null) continue;
@@ -57,9 +57,9 @@ public class ItemConsume : MonoBehaviour
 
     private void ConsumeStaminaPotion()
     {
-        if (_inventory.Consumable == null) { return; }
-        if (_inventory.Consumable.slots.Count < 1) return;
-        foreach (var slot in _inventory.Consumable.slots)
+        if (_inventory.GetInventory(ItemType.Consumable) == null) { return; }
+        if (_inventory.GetInventory(ItemType.Consumable).slots.Count < 1) return;
+        foreach (var slot in _inventory.GetInventory(ItemType.Consumable).slots)
         {
             if (slot.IsEmpty) continue;
             if (slot.stack.item == null) continue;
