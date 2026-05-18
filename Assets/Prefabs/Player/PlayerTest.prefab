@@ -121,7 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8f77d51d3a22734a910464b895c94f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackData: {fileID: 11400000, guid: 1ff6413ee0d82974980c698df5c3de24, type: 2}
+  _attackData: {fileID: 0}
+  _factionTarget: 0
 --- !u!1 &1382397178787076059
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,6 +352,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef44958515647a14da1dcc2ec81e0de7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hudInventoryControllerEquippable: {fileID: 0}
+  _hudInventoryControllerConsumable: {fileID: 0}
 --- !u!114 &4085325821075832656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,7 +450,6 @@ GameObject:
   - component: {fileID: 4742076383709758182}
   - component: {fileID: 6067888493484398214}
   - component: {fileID: 2241186627507092516}
-  - component: {fileID: 1174232280517516612}
   m_Layer: 7
   m_Name: Logic
   m_TagString: Player
@@ -575,16 +577,3 @@ MonoBehaviour:
   materials:
   - {fileID: -3033667219593020291, guid: e9bb8c5fd27124c93bbf364c49307001, type: 3}
   - {fileID: 2100000, guid: 0aa37164acf594e03876b4e0b590280e, type: 2}
---- !u!114 &1174232280517516612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4968788885786030874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b74e57563b588c4cac1813efb3f663c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  team: 0

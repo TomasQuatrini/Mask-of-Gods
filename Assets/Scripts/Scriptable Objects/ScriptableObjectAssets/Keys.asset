@@ -20,8 +20,9 @@ MonoBehaviour:
   jump: 32
   attack: 323
   defense: 324
-  pickup: 101
   takedamage: 102
+  switchWeapon: 9
+  pickup: 101
   consumeH: 111
   consumeS: 112
-  switchWeapon: 9
+  interact: 105
