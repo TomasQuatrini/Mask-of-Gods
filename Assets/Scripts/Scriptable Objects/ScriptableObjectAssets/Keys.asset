@@ -23,6 +23,6 @@ MonoBehaviour:
   takedamage: 102
   switchWeapon: 9
   pickup: 101
-  consumeH: 111
-  consumeS: 112
+  consumeH: 104
+  consumeS: 103
   interact: 105
