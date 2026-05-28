@@ -1,6 +1,8 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "KeysMove", menuName = "ScriptableObjects/Keys/KeysMove", order = 1)]
+
+[System.Serializable]
 public class Keys : ScriptableObject
 {
     [Header("Movement")]

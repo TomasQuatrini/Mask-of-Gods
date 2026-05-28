@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ac2718280dcec04ab689c16fd188aae, type: 3}
   m_Name: Basic Sword 1
   m_EditorClassIdentifier: 
-  Name: Basic Sword 1
+  ItemName: sword1
   Id: sword_basic_1
   Type: 1
   EffectType: 2
   EffectAmount: 20
   stackable: 0
   maxStack: 1
-  Icon: {fileID: 21300000, guid: 6ded2b788f16adb47945936108a70646, type: 3}
+  IconPath: sword
   weaponAttackType: 1
   staminaCost: 15
   cooldown: 0.5

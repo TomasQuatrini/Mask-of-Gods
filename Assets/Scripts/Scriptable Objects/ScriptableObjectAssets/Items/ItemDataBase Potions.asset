@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ItemDataBase Potions
   m_EditorClassIdentifier: 
   _items:
-  - {fileID: 11400000, guid: 8e0eb035ddb1a744db9faf743b4e027a, type: 2}
-  - {fileID: 11400000, guid: 1ed744c131fe158419241881192551c1, type: 2}
+  - {fileID: 11400000, guid: 4ddfc7ff548f0d34f8a6f26de53a83a5, type: 2}
+  - {fileID: 11400000, guid: f905265f799cb3746be8b327e9356609, type: 2}

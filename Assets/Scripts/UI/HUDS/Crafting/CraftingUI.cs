@@ -1,7 +1,6 @@
 using System.Inventory;
 using UnityEngine;
 using System.Collections.Generic;
-using UI.Crafting;
 
 public class HUD_CraftingUI : MonoBehaviour
 {
@@ -17,7 +16,7 @@ public class HUD_CraftingUI : MonoBehaviour
 
     private PlayerInventoryComponent _inventory;
     private ICraftingSystem _craftingSystem;
-    private List<Recipe> _availableRecipes;
+    private Recipe[] _availableRecipes;
     private Recipe _selectedRecipe;
 
     private void Start()
@@ -25,14 +24,14 @@ public class HUD_CraftingUI : MonoBehaviour
         _panel.SetActive(false);
     }
 
-    public void Open(PlayerContext playerContext, List<Recipe> availableRecipes)
+    public void Open(PlayerContext playerContext, Recipe[] availableRecipes)
     {
         _inventory = playerContext.Inventory;
         _craftingSystem = playerContext.CraftingSystem;
         _availableRecipes = availableRecipes;
         _panel.SetActive(true);
         BuildRecipeButtons();
-        if (_availableRecipes.Count > 0)
+        if (_availableRecipes.Length > 0)
         {
             SelectRecipe(_availableRecipes[0]);
         }
@@ -46,7 +45,7 @@ public class HUD_CraftingUI : MonoBehaviour
     private void SelectRecipe(Recipe recipe)
     {
         _selectedRecipe = recipe;
-        Debug.Log($"Selected recipe: {recipe.name}");
+        Debug.Log($"Selected recipe: {recipe.RecipeName}");
         RefreshDetail();
     }
 
@@ -72,7 +71,7 @@ public class HUD_CraftingUI : MonoBehaviour
             _craftingRecipeDataView.Clear();
             return;
         }
-        Debug.Log($"Refreshing details for recipe: {_selectedRecipe.name}");
+        Debug.Log($"Refreshing details for recipe: {_selectedRecipe.RecipeName}");
         bool canCraft = _craftingSystem.CanCraft(_selectedRecipe);
         _craftingRecipeDataView.Show(_selectedRecipe, _inventory, canCraft, CraftSelected);
     }

@@ -33,7 +33,7 @@ namespace System.Inventory
                 return;
             }
             _icon.enabled = true;
-            _icon.sprite = stack.item.Icon;
+            _icon.sprite = stack.item.GetIcon();
             if (stack.item.stackable && stack.quantity > 0)
             {
                 _quantityText.text = stack.quantity.ToString();

@@ -1,10 +1,13 @@
 using UnityEngine;
 
+
+
 namespace System.Inventory
 {
+    [System.Serializable]
     public abstract class ItemData : ScriptableObject
     {
-        public string Name;
+        public string ItemName;
         public string Id;
         public ItemType Type;
         public EffectType EffectType;
@@ -13,9 +16,19 @@ namespace System.Inventory
         public bool stackable = true;
         public int maxStack = 99;
 
-        [Header("UI")]
-        public Sprite Icon;
+        public string IconPath;
+        private Sprite _cachedIcon;
 
+        public Sprite GetIcon()
+        {
+            if (_cachedIcon != null) return _cachedIcon;
+            if (string.IsNullOrEmpty(IconPath))
+            {
+                return null;
+            }
+            _cachedIcon = UnityEngine.Resources.Load<Sprite>(IconPath);
+            return _cachedIcon;
+        }
         public abstract void Use(Inventory owner);
     }
     public class EquippableItemData : ItemData

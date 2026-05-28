@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Inventory;
 
 [CreateAssetMenu(fileName = "ItemDataBase", menuName = "Inventory/ItemDataBase", order = 1)]
+
+[System.Serializable]
 public class ItemDataBase : ScriptableObject
 {
     [SerializeField] private List<ItemData> _items;
@@ -21,7 +23,7 @@ public class ItemDataBase : ScriptableObject
             if (item == null) continue;
             if (_itemDictionary.ContainsKey(item.Id))
             {
-                Debug.LogWarning($"Duplicate item ID detected: {item.Id}. Skipping item {item.Name}.");
+                Debug.LogWarning($"Duplicate item ID detected: {item.Id}. Skipping item {item.ItemName}.");
                 continue;
             }
             _itemDictionary.Add(item.Id, item);

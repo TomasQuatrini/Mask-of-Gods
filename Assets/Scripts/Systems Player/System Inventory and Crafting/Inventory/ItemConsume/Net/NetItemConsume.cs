@@ -107,12 +107,12 @@ public class NetItemConsume : NetworkBehaviour
         bool consumed = _inventory.ConsumeItem(itemData, 1);
         if (!consumed)
         {
-            Debug.Log($"[NetItemConsume] No había {itemData.Name} para consumir");
+            Debug.Log($"[NetItemConsume] No había {itemData.ItemName} para consumir");
             return;
         }
 
         ApplyItemEffect(itemData);
-        Debug.Log($"[NetItemConsume] Consumido {itemData.Name}");
+        Debug.Log($"[NetItemConsume] Consumido {itemData.ItemName}");
     }
 
     private void EnsureRefs()

@@ -14,7 +14,7 @@ public class RecipeButtonView : MonoBehaviour
     {
         _recipe = recipe;
         _onClick = onClick;
-        _recipeNameText.text = recipe.recipeName;
+        _recipeNameText.text = recipe.RecipeName;
 
         _button.onClick.RemoveAllListeners();
         _button.onClick.AddListener(CLick);

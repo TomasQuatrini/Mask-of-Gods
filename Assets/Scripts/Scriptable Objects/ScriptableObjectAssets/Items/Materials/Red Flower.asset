@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10ffc47c381032943bd86680b8b25817, type: 3}
   m_Name: Red Flower
   m_EditorClassIdentifier: 
-  Name: Red Flower
+  ItemName: Flower Curation
   Id: flower_red
   Type: 2
   EffectType: 3
   EffectAmount: 0
   stackable: 1
   maxStack: 99
-  Icon: {fileID: 21300000, guid: 24b92353af46fb64cbb0d8457a48bf5c, type: 3}
+  IconPath: curationflower

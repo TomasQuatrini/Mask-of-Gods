@@ -4,9 +4,11 @@ namespace System.Inventory
     public class ItemStack
     {
         public ItemData item;
-        public int quantity;
-        public bool isEmpty => item == null || quantity <= 0;
+        public int quantity = 1;
 
+        public bool IsEmpty => item == null || quantity <= 0;
+
+        public ItemStack() { }
 
         public ItemStack(ItemData item, int quantity)
         {

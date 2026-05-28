@@ -4,7 +4,7 @@ using UnityEngine;
 public class CraftingNPC : MonoBehaviour, IInteractable
 {
     [SerializeField] private HUD_CraftingUI _craftingUI;
-    [SerializeField] private List<Recipe> _availableRecipes;
+    [SerializeField] private Recipe[] _availableRecipes;
 
     public void Interact(IContext context)
     {

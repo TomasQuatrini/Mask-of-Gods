@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 238b8a90bf2dff94bbc09590636576cc, type: 3}
   m_Name: Stamina Potion 1
   m_EditorClassIdentifier: 
-  Name: Stamina Potion 1
+  ItemName: Stamina Potion 1
   Id: potion_stamina_1
   Type: 0
   EffectType: 1
   EffectAmount: 30
   stackable: 1
   maxStack: 99
-  Icon: {fileID: 21300000, guid: 80245ed695e5ad046adbf8493fe39573, type: 3}
+  IconPath: staminapotion_icon
